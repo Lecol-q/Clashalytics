@@ -1,24 +1,15 @@
 package Collin_Le.StatRoyale;
 
 import org.springframework.stereotype.Component;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.http.HttpRequest;
-
-@Component
 public class Player {
-
     private String tag;
     private String name;
     private int trophies;
 
-    // no argument constructor
-    public Player(){
 
-    }
+    // no argument constructor
+    public Player(){}
 
     // parameterized constructor
     public Player(String name, String tag, int trophies) {
@@ -27,11 +18,9 @@ public class Player {
         this.trophies = trophies;
     }
 
-
-
     // Player section
-    public void displayStats() throws IOException {
-        System.out.println(name);
+    public void displayPlayerStats() {
+        System.out.println("Name: " + name + "\nTag: " + tag + "\nTrophies: " + trophies);
     }
 
     // getters

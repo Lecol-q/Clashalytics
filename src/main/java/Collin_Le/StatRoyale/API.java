@@ -6,17 +6,20 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
+import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
-import java.net.HttpURLConnection;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class API {
     Player player;
-    String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
+    Card card;
+    String apiKey = Config.getKey("CLASH_ROYALE_API_KEY2");
     String base_url = Config.getURL("BASE_URL");
     String tag = "#U9JP0JVR";
 
@@ -31,9 +34,20 @@ public class API {
             })
             .build();
 
-    public void request() {
+    public void requestPlayerStats() {
         try {
-        player = objectMapper.readValue(restClient.get().uri("/players/{playerTag}", tag).retrieve().body(String.class), Player.class);
+            player = objectMapper.readValue(restClient.get().uri("/players/{playerTag}", tag).retrieve().body(String.class), Player.class);
+            player.displayPlayerStats();
+        } catch(HttpClientErrorException.NotFound k) {
+            System.out.println(k);
+        }
+    }
+
+    public void requestCardStats() {
+        try {
+            List<Card> items = objectMapper.readValue(restClient.get().uri("/cards?limit=1").retrieve().body(String.class), new TypeReference<List<Card>>() {
+            });
+            items.displayCardStats();
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
         }
