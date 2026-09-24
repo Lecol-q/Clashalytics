@@ -12,6 +12,6 @@ public class Config {
     }
 
     public static String getURL(String url) {
-    return dotenv.get(url);
+        return dotenv.get(url);
     }
 }

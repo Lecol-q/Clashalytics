@@ -10,9 +10,6 @@ import java.net.http.HttpRequest;
 
 @Component
 public class Player {
-    Player player;
-
-    String BASE_URL = Config.getURL("BASE_URL");
 
     private String tag;
     private String name;
@@ -34,7 +31,7 @@ public class Player {
 
     // Player section
     public void displayStats() throws IOException {
-        System.out.println("Name: " + name + "\n" + "Tag: " + tag + "\n" + "Trophies: " + trophies);
+        System.out.println(name);
     }
 
     // getters
@@ -59,7 +56,7 @@ public class Player {
         this.tag = tag;
     }
 
-    public void setTrophies(){
+    public void setTrophies(int Trophies){
         this.trophies = trophies;
     }
 

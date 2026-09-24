@@ -15,8 +15,9 @@ public class StatRoyaleApplication {
 
 		Player player = applicationContext.getBean(Player.class);
 		API api = applicationContext.getBean(API.class);
+		Config config = applicationContext.getBean(Config.class);
+		api.request();
 		player.displayStats();
-
 	}
 
 }
