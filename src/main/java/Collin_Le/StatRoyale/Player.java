@@ -1,10 +1,19 @@
 package Collin_Le.StatRoyale;
 
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.net.URL;
+import java.net.http.HttpRequest;
 
 @Component
 public class Player {
-    //private final API api;
+    Player player;
+
+    String BASE_URL = Config.getURL("BASE_URL");
+
     private String tag;
     private String name;
     private int trophies;
@@ -21,8 +30,11 @@ public class Player {
         this.trophies = trophies;
     }
 
-    public void displayStats() {
 
+
+    // Player section
+    public void displayStats() throws IOException {
+        System.out.println("Name: " + name + "\n" + "Tag: " + tag + "\n" + "Trophies: " + trophies);
     }
 
     // getters
