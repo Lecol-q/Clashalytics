@@ -19,11 +19,14 @@ import java.util.List;
 public class API {
     public Player player;
     public Card card;
+    Chest chest;
     String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
     String base_url = Config.getURL("BASE_URL");
     String tag = "#U9JP0JVR";
 
+    // List Objects
     Items items;
+    ChestList chests;
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -54,7 +57,14 @@ public class API {
         }
     }
 
-
+    public void requestChests() {
+        try {
+            chests = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/upcomingchests", tag).retrieve().body(String.class), ChestList.class);
+            chests.getUpcomingChests();
+        } catch(HttpClientErrorException.NotFound k) {
+            System.out.println(k);
+        }
+    }
 
 
 }

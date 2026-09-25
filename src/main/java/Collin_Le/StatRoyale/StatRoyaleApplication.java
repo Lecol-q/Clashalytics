@@ -18,7 +18,8 @@ public class StatRoyaleApplication {
 		API api = applicationContext.getBean(API.class);
 		Config config = applicationContext.getBean(Config.class);
 		api.requestPlayerStats();
-		api.requestCardStats();
+		//api.requestCardStats();
+		api.requestChests();
 	}
 
 }
