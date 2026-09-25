@@ -17,11 +17,13 @@ import java.util.List;
 
 @Component
 public class API {
-    Player player;
-    Card card;
-    String apiKey = Config.getKey("CLASH_ROYALE_API_KEY2");
+    public Player player;
+    public Card card;
+    String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
     String base_url = Config.getURL("BASE_URL");
     String tag = "#U9JP0JVR";
+
+    Items items;
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -45,9 +47,8 @@ public class API {
 
     public void requestCardStats() {
         try {
-            List<Card> items = objectMapper.readValue(restClient.get().uri("/cards?limit=1").retrieve().body(String.class), new TypeReference<List<Card>>() {
-            });
-            items.displayCardStats();
+            items = objectMapper.readValue(restClient.get().uri("/cards?limit=5").retrieve().body(String.class), Items.class);
+            items.getCards();
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
         }

@@ -2,15 +2,17 @@ package Collin_Le.StatRoyale;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 public class Card {
     private String name;
-    private int elixirCost;
+    private String elixirCost;
     private String rarity;
 
     // Empty constructor
     public Card(){}
 
-    public Card(String name, int elixirCost, String rarity){
+    public Card(String name, String elixirCost, String rarity){
         this.name = name;
         this.elixirCost = elixirCost;
         this.rarity = rarity;
@@ -25,7 +27,7 @@ public class Card {
         return name;
     }
 
-    public int getElixirCost(){
+    public String getElixirCost(){
         return elixirCost;
     }
 
@@ -38,11 +40,15 @@ public class Card {
         this.name = name;
     }
 
-    public void setElixirCost(int elixirCost){
+    public void setElixirCost(String elixirCost){
         this.elixirCost = elixirCost;
     }
 
     public void setRarity(String rarity){
         this.rarity = rarity;
+    }
+
+    public String toString(){
+        return name + " : " + elixirCost + " : " + rarity;
     }
 }
