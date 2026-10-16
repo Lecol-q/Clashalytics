@@ -1,8 +1,5 @@
-package Collin_Le.StatRoyale;
+package Collin_Le.StatRoyale.model;
 
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Items {

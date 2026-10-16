@@ -1,11 +1,12 @@
 package Collin_Le.StatRoyale;
 
+import Collin_Le.StatRoyale.config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import Collin_Le.StatRoyale.service.API;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 @SpringBootApplication
 public class StatRoyaleApplication {
@@ -17,9 +18,5 @@ public class StatRoyaleApplication {
 		//Card card = applicationContext.getBean(Card.class);
 		API api = applicationContext.getBean(API.class);
 		Config config = applicationContext.getBean(Config.class);
-		api.requestPlayerStats();
-		//api.requestCardStats();
-		api.requestChests();
 	}
-
 }

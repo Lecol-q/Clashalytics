@@ -1,5 +1,30 @@
+This project, since its spring boot will use the MVC design
+
+* WEB STACK *
+HTML, CSS, TYPESCRIPT
+
+* BACK END STACK *
+JAVA
+
+* SERVICES *
+Clash Royale API
+
+
+MODEL - Things like card, player, etc
+VIEW - Web based UI so HTML, CSS, TYPESCRIPT
+CONTROLLER - will implement soon
+
+
+probably won't need a database for this project
+
+We make a http request
+Ideally to parse a json we are using Jackson ObjectMapper
+then we put everything into the objects we need
+
+
 Player Stat information page
 (*rough idea*)
+
 
 Player name
 player stats

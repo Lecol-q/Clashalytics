@@ -1,19 +1,11 @@
-package Collin_Le.StatRoyale;
+package Collin_Le.StatRoyale.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
+import Collin_Le.StatRoyale.config.Config;
+import Collin_Le.StatRoyale.model.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
-
-import java.io.*;
-import java.net.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class API {
@@ -22,7 +14,7 @@ public class API {
     Chest chest;
     String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
     String base_url = Config.getURL("BASE_URL");
-    String tag = "#U9JP0JVR";
+    //String tag = "#U9JP0JVR";
 
     // List Objects
     Items items;
@@ -39,12 +31,14 @@ public class API {
             })
             .build();
 
-    public void requestPlayerStats() {
+    public Player requestPlayerStats(String tag) {
         try {
             player = objectMapper.readValue(restClient.get().uri("/players/{playerTag}", tag).retrieve().body(String.class), Player.class);
             player.displayPlayerStats();
+            return player;
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
+            return null;
         }
     }
 
@@ -57,7 +51,7 @@ public class API {
         }
     }
 
-    public void requestChests() {
+    public void requestChests(String tag) {
         try {
             chests = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/upcomingchests", tag).retrieve().body(String.class), ChestList.class);
             chests.getUpcomingChests();

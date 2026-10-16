@@ -1,6 +1,4 @@
-package Collin_Le.StatRoyale;
-
-import org.springframework.stereotype.Component;
+package Collin_Le.StatRoyale.model;
 
 public class Player {
     // general information
@@ -26,12 +24,14 @@ public class Player {
     }
 
     // Player section
-    public void displayPlayerStats() {
+    public String displayPlayerStats() {
         double winrate = (double) wins / battleCount * 100;
         System.out.println("Name: " + name + "\nTag: " + tag + "\nTrophies: " + trophies);
         System.out.println("*Battle stats*");
         System.out.println("Wins: " + wins + "\nLosses: " + losses);
         System.out.printf("Winrate: %.0f%" + "%\n", winrate);
+
+        return "Name: " + name + "\nWins: " + wins + "\nLosses: " + losses;
     }
 
     // getters

@@ -1,6 +1,4 @@
-package Collin_Le.StatRoyale;
-
-import java.util.List;
+package Collin_Le.StatRoyale.model;
 
 
 /*{

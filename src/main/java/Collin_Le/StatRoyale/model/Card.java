@@ -1,8 +1,4 @@
-package Collin_Le.StatRoyale;
-
-import org.springframework.stereotype.Component;
-
-import java.util.List;
+package Collin_Le.StatRoyale.model;
 
 public class Card {
     private String name;

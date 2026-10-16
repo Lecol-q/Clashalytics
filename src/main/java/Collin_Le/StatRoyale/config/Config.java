@@ -1,4 +1,4 @@
-package Collin_Le.StatRoyale;
+package Collin_Le.StatRoyale.config;
 
 import io. github.cdimascio.dotenv.Dotenv;
 import org.springframework.stereotype.Component;
