@@ -3,10 +3,7 @@ package Collin_Le.StatRoyale.controller;
 import Collin_Le.StatRoyale.model.Player;
 import Collin_Le.StatRoyale.service.API;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PlayerController {
@@ -17,10 +14,11 @@ public class PlayerController {
         this.api = api;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/stats")
-    public String getPlayer(@RequestParam String tag) {
+    public Player getPlayer(@RequestParam String tag) {
         player = api.requestPlayerStats(tag);
 
-        return player.displayPlayerStats();
+        return player;
     }
 }
