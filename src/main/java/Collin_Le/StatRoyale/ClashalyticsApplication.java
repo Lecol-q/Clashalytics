@@ -9,10 +9,10 @@ import Collin_Le.StatRoyale.service.API;
 import java.io.IOException;
 
 @SpringBootApplication
-public class StatRoyaleApplication {
+public class ClashalyticsApplication {
 
 	public static void main(String[] args) throws IOException {
-		ApplicationContext applicationContext = SpringApplication.run(StatRoyaleApplication.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(ClashalyticsApplication.class, args);
 
 		//Player player = applicationContext.getBean(Player.class);
 		//Card card = applicationContext.getBean(Card.class);
