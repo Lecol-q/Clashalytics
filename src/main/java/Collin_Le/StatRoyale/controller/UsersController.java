@@ -1,8 +1,8 @@
 package Collin_Le.StatRoyale.controller;
 
+import Collin_Le.StatRoyale.model.UserResponse;
 import Collin_Le.StatRoyale.model.Users;
 import Collin_Le.StatRoyale.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,18 +14,22 @@ public class UsersController {
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/user")
-    public void createNewUser(@RequestParam String username, @RequestParam String password) {
-        userService.createUser(username, password);
+    public ResponseEntity<Void> createNewUser(@RequestParam String username, @RequestParam String password) {
+        if(!userService.createUser(username, password)) {
+            return ResponseEntity.status(409).build();
+        }
+
+        return ResponseEntity.status(201).build();
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
-    public ResponseEntity<Users> loginUser(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<UserResponse> loginUser(@RequestParam String username, @RequestParam String password) {
         Users user = userService.loginUser(username, password);
         if(user == null) {
             return ResponseEntity.status(401).build();
         }
-
-        return ResponseEntity.ok(user);
+        UserResponse userResponse = new UserResponse(user.getId(), user.getUsername());
+        return ResponseEntity.ok(userResponse);
     }
 }

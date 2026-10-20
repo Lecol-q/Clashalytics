@@ -2,7 +2,6 @@ package Collin_Le.StatRoyale.controller;
 
 import Collin_Le.StatRoyale.model.Player;
 import Collin_Le.StatRoyale.service.API;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

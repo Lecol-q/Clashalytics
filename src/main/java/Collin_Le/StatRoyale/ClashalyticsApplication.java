@@ -1,6 +1,8 @@
 package Collin_Le.StatRoyale;
 
 import Collin_Le.StatRoyale.config.Config;
+import Collin_Le.StatRoyale.config.SecurityConfig;
+import Collin_Le.StatRoyale.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +16,9 @@ public class ClashalyticsApplication {
 	public static void main(String[] args) throws IOException {
 		ApplicationContext applicationContext = SpringApplication.run(ClashalyticsApplication.class, args);
 
-		//Player player = applicationContext.getBean(Player.class);
-		//Card card = applicationContext.getBean(Card.class);
 		API api = applicationContext.getBean(API.class);
 		Config config = applicationContext.getBean(Config.class);
+		SecurityConfig securityConfig = applicationContext.getBean(SecurityConfig.class);
+		UserService userService = applicationContext.getBean(UserService.class);
 	}
 }

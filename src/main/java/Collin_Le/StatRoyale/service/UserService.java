@@ -1,17 +1,13 @@
 package Collin_Le.StatRoyale.service;
 
-import Collin_Le.StatRoyale.config.SecurityConfig;
 import Collin_Le.StatRoyale.model.Users;
 import Collin_Le.StatRoyale.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class UserService {
-    Users users;
     UserRepository userRepository;
     BCryptPasswordEncoder passwordEncoder;
 
@@ -20,18 +16,26 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void createUser(String username, String password) {
-        Users users = new Users(username, password);
-        passwordEncoder.encode(password);
+    public boolean createUser(String username, String password) {
+
+        if(userRepository.findByUsername(username).isPresent()) {
+            return false;
+        }
+
+        Users users = new Users(username, passwordEncoder.encode(password));
         userRepository.save(users);
+        System.out.println("Creation good");
+        return true;
     }
 
     public Users loginUser(String username, String password) {
         Optional<Users> foundUser = userRepository.findByUsername(username);
 
-        if(foundUser.isPresent() && Objects.equals(foundUser.get().getPassword(), password)) {
+        if(foundUser.isPresent() && passwordEncoder.matches(password, foundUser.get().getPassword())) {
+            System.out.println("Login good");
             return foundUser.get();
         }
+
         return null;
     }
 }
