@@ -17,6 +17,11 @@ public class Users {
         this.password = password;
     }
 
+    // no args constructor
+    public Users() {
+
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
