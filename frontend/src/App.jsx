@@ -1,17 +1,17 @@
-
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import './App.css';
 
 function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [tag, setTag] = useState("")
-  const [playerStats, setPlayerStats] = useState(null)
+  const [playerStats, setPlayerStats] = useState(null);
+  const navigate = useNavigate();
 
-
+  // this is the main render block
   return (
       <div className={`dashboard ${hasSearched ? 'searched' : ''}`}>
         <header className="toolBar">
-
           <h1 className="brand">
             <svg
                 viewBox="0 0 24 24"
@@ -39,6 +39,7 @@ function App() {
                   onChange={e => setTag(e.target.value)}
               />
 
+                {/* This is the main toolbar*/}
               <button
                   className="searchButton"
                   onClick={() =>  {
@@ -46,6 +47,7 @@ function App() {
                       alert("Enter a valid tag")
                       return;
                     }
+
                     const url = "http://localhost:8080/stats" + `?tag=${encodeURIComponent(tag)}`;
                     fetch(url)
                         .then((response) => {
@@ -79,9 +81,32 @@ function App() {
                 </svg>
               </button>
             </div>
+
+              <button
+                  className="userButton"
+                  onClick={() => navigate("/login")}
+                  aria-label={"Login"}
+                  title={"Login"}
+              >
+                  <svg
+                      viewBox="0 0 24 24"
+                      width="26"
+                      height="26"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                  >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M5 21v-2a7 7 0 0 1 14 0v2" />
+                  </svg>
+              </button>
           </nav>
         </header>
 
+
+          {/* This is the main dashboard */}
         <main className="mainLayout">
           <section className="characterPanel">
             <h2>All Your Stats in One Place</h2>

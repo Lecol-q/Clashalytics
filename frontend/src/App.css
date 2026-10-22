@@ -10,14 +10,43 @@
   font-family: system-ui, sans-serif;
 }
 
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
 
 /* Top navigation */
 .toolBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 32px;
-  border-bottom: 1px solid #2c2f40;
+  position: relative;
+  padding: 16px 24px;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+
+  color: #f6c85f;
+  background: transparent;
+  border: 1px solid #f6c85f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.userButton:hover {
+  background: rgba(246, 200, 95, 0.12);
 }
 
 .toolBar h1 {
@@ -30,15 +59,23 @@
 .searchBox {
   display: flex;
   align-items: center;
-  background: #222535;
-  border: 1px solid #383c50;
-  border-radius: 10px;
+  width: 260px;
+  height: 42px;
+  border: 1px solid #555b75;
+  border-radius: 999px;
   overflow: hidden;
+  background: #202332;
+  transition: border-color 200ms ease;
+}
+
+.searchBox:focus-within {
+  border-color: #f6c85f;
 }
 
 .searchBox input {
-  width: 190px;
-  padding: 11px 14px;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
   border: none;
   outline: none;
   background: transparent;
@@ -146,7 +183,7 @@
 
 /* Smaller screens */
 @media (max-width: 600px) {
-  .toolBar {
+  .navActions {
     padding: 16px;
     gap: 12px;
   }
@@ -182,3 +219,17 @@
   flex-shrink: 0;
 }
 
+.loginButton {
+  background: transparent;
+  color: #f6c85f;
+  border: 1px solid #f6c85f;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.loginButton:hover {
+  background: rgba(246, 200, 95, 0.12);
+}
