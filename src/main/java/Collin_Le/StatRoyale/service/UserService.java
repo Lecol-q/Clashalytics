@@ -19,6 +19,7 @@ public class UserService {
     public boolean createUser(String username, String password) {
 
         if(userRepository.findByUsername(username).isPresent()) {
+            System.out.println("Username same");
             return false;
         }
 

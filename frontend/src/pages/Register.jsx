@@ -5,6 +5,8 @@ import {useState} from "react";
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
     return (
         <div className="authPage">
             <h1>Create an Account</h1>
@@ -30,11 +32,13 @@ function Register() {
                     })
                 })
                     .then((response) => {
-                        if (!response.ok) {
+                        if (response.status === 409) {
+                            setError("Username Already Exists!")
                             throw new Error(`HTTP error: ${response.status}`);
                         }
                     })
             }}>
+
                 <input
                     type="text"
                     placeholder="Username"
@@ -50,6 +54,8 @@ function Register() {
                     onChange={e => setPassword(e.target.value)}
                     required
                 />
+
+                {error && <p className="error-message">{error}</p>}
 
                 <button type="submit">Register</button>
             </form>
