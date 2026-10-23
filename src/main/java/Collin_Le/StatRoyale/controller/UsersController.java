@@ -13,7 +13,7 @@ public class UsersController {
     public UsersController(UserService userService) { this.userService = userService; }
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @PostMapping("/user")
+    @PostMapping("/register")
     public ResponseEntity<Void> createNewUser(@RequestParam String username, @RequestParam String password) {
         if(!userService.createUser(username, password)) {
             return ResponseEntity.status(409).build();
