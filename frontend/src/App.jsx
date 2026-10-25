@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -7,6 +7,30 @@ function App() {
   const [tag, setTag] = useState("")
   const [playerStats, setPlayerStats] = useState(null);
   const navigate = useNavigate();
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+      fetch("http://localhost:8080/me", {
+          credentials: "include"
+      })
+          .then((response) => {
+              if (response.status == 401) {
+                  return null;
+              }
+
+              if (!response.ok) {
+                  throw new Error(`HTTP error: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then((user) => {
+              setLoggedInUser(user);
+              console.log(user);
+          })
+          .catch((err) => {
+              console.error("Failed to check login session:", err);
+          });
+  }, []);
 
   // this is the main render block
   return (

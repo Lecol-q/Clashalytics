@@ -6,6 +6,7 @@ import {useState} from "react";
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedInUser, setLoggedUser] = useState(null);
 
     return (
         <div className="authPage">
@@ -23,6 +24,7 @@ function Login() {
                     const url="http://localhost:8080/login";
                     fetch(url, {
                         method: 'POST',
+                        credentials: "include",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
@@ -35,6 +37,11 @@ function Login() {
                             if(!response.ok) {
                                 throw new Error(`HTTP error: ${response.status}`);
                             }
+                            return response.json();
+                        })
+                        .then((user) => {
+                            setLoggedUser(user);
+                            console.log(user)
                         })
             }}>
                 <input

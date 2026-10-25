@@ -55,10 +55,22 @@ public class UsersController {
             securityContextRepository.saveContext(context, request, response);
             Users user = userService.lookUpUser(authentication.getName());
             UserResponse userResponse = new UserResponse(user.getId(), user.getUsername());
+            System.out.println(user.getUsername() + ": logged in");
             return ResponseEntity.ok(userResponse);
-
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).build();
         }
+    }
+
+    @CrossOrigin(
+            origins = "http://localhost:5173/",
+            allowCredentials = "true"
+    )
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> persistLogin() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Users user = userService.lookUpUser(username);
+
+        return ResponseEntity.ok(new UserResponse(user.getId(), user.getUsername()));
     }
 }
