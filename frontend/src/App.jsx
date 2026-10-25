@@ -149,8 +149,7 @@ function App() {
               {loggedInUser ? (
                   <>
                       <h2>Account</h2>
-                      <p>Username: {loggedInUser.username}</p>
-                      <p>User ID: {loggedInUser.id}</p>
+                      <p>{loggedInUser.username}</p>
                   </>
               ) : (
                   <>

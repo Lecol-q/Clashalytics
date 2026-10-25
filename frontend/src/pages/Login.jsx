@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import {useState} from "react";
 
@@ -7,6 +8,7 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loggedInUser, setLoggedUser] = useState(null);
+    const navigate = useNavigate();
 
     return (
         <div className="authPage">
@@ -42,6 +44,7 @@ function Login() {
                         .then((user) => {
                             setLoggedUser(user);
                             console.log(user)
+                            navigate("/");
                         })
             }}>
                 <input
