@@ -10,6 +10,5 @@ import java.util.Optional;
 
 public interface SavedPlayersRepository extends CrudRepository<SavedPlayer, Long> {
     List<SavedPlayer> findByUsers(Users users);
-
     Optional<SavedPlayer> findBySavedTagAndUsers(String savedTag, Users users);
 }
