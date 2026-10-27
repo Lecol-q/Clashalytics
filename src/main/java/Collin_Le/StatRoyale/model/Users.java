@@ -2,6 +2,8 @@ package Collin_Le.StatRoyale.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class Users {
@@ -13,7 +15,6 @@ public class Users {
     @Column(unique = true, nullable = false)
     private String username;
     private String password;
-
     public Users(String username, String password) {
         this.username = username;
         this.password = password;

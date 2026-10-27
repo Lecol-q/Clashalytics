@@ -5,6 +5,8 @@ import Collin_Le.StatRoyale.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,6 +32,7 @@ public class UserService {
         return true;
     }
 
+    // handled by spring security probably sohuld refactor this
     public Users loginUser(String username, String password) {
         Optional<Users> foundUser = userRepository.findByUsername(username);
 
@@ -39,6 +42,12 @@ public class UserService {
         }
 
         return null;
+    }
+
+    public String savePlayerTags(String tag) {
+
+
+        return tag;
     }
 
     public Users lookUpUser(String username) {
