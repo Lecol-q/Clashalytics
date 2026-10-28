@@ -29,7 +29,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://localhost:5173",
+            origins = "http://https://clashalytics.netlify.app/",
             allowCredentials = "true"
     )
     @PostMapping("/register")
@@ -42,7 +42,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://localhost:5173",
+            origins = "http://https://clashalytics.netlify.app/",
             allowCredentials = "true"
     )
     @PostMapping("/login")
@@ -63,7 +63,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://localhost:5173/",
+            origins = "http://https://clashalytics.netlify.app//",
             allowCredentials = "true"
     )
     @GetMapping("/me")

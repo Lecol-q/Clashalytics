@@ -13,7 +13,7 @@ public class PlayerController {
         this.api = api;
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://https://clashalytics.netlify.app/")
     @GetMapping("/stats")
     public Player getPlayer(@RequestParam String tag) {
         player = api.requestPlayerStats(tag);
