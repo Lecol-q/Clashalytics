@@ -11,6 +11,68 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [savedPlayers, setSavedPlayers] = useState([]);
 
+    const isPlayerSaved = savedPlayers.some(
+        (player) => player.savedTag === playerStats?.tag
+    );
+
+    const loadSavedPlayers = () => {
+        const url = "http://localhost:8080/retrieve-saved-players";
+        fetch(url, {
+            credentials: "include"
+        })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Saved players: ", data);
+                setSavedPlayers(data);
+            })
+            .catch((err) => {
+                console.error("Failed to fetch saved players:", err);
+            });
+    };
+
+    const savePlayer = () => {
+        const url = "http://localhost:8080/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        fetch(url, {
+            method: 'POST',
+            credentials: "include"
+        })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+            })
+            .then(() => {
+                loadSavedPlayers();
+            })
+            .catch((err) => {
+                console.error("Failed to save player:", err);
+            });
+    };
+
+    const removePlayer = () => {
+        const url = "http://localhost:8080/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        fetch(url, {
+            method: 'POST',
+            credentials: "include"
+        })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+            })
+            .then(() => {
+                loadSavedPlayers();
+            })
+            .catch((err) => {
+                console.error("Failed to remove player:", err);
+            });
+    };
+
   useEffect(() => {
       fetch("http://localhost:8080/me", {
           credentials: "include"
@@ -27,21 +89,25 @@ function App() {
           })
           .then((user) => {
               setLoggedInUser(user);
-
+              if(user != null) {
+                  loadSavedPlayers();
+              }
               console.log(user);
           })
           .catch((err) => {
               console.error("Failed to check login session:", err);
           });
   }, []);
-    const searchPlayer = () => {
-        if (tag.trim() === "") {
+
+    const searchPlayer = (playerTag = tag) => {
+        console.log("playerTag:", playerTag, typeof playerTag);
+        if (playerTag.trim() === "") {
             alert("Enter a valid tag");
             return;
         }
 
         const url = "http://localhost:8080/stats" +
-            `?tag=${encodeURIComponent(tag.trim())}`;
+            `?tag=${encodeURIComponent(playerTag.trim())}`;
 
         fetch(url)
             .then((response) => {
@@ -93,7 +159,7 @@ function App() {
                 {/* This is the main toolbar*/}
               <button
                   className="searchButton"
-                  onClick={searchPlayer}
+                  onClick={() => searchPlayer()}
                   aria-label="Search player"
               >
                 <svg
@@ -142,6 +208,8 @@ function App() {
 
 
           <aside className={`accountSidebar ${isSidebarOpen ? "open" : ""}`}>
+              {loggedInUser ? (
+                      <>
               <div className="sidebarHeader">
                   <div className="accountIdentity">
                       <div className="accountAvatar">
@@ -169,15 +237,24 @@ function App() {
               </div>
 
               <div className="savedPlayersList">
-                  {/* TODO: Map your fetched saved-player array here. */}
-                  {/* Each player should be a separate rectangle containing name + tag. */}
+                  {savedPlayers.length === 0 ? (
+                      <>
+                        <strong>Your roster is empty</strong>
+                        <p>Save a player to see them here.</p>
+                      </>
+                  ) : (
+                        savedPlayers.map((player) => (
+                            <div className="savedPlayerCard" key={player.id} onClick={() => searchPlayer(player.savedTag)}>
+                                <strong className="savedPlayerName">
+                                    {player.savedName}
+                                </strong>
 
-
-                  <div className="emptyPlayers">
-                      <span className="emptyPlayersIcon">♜</span>
-                      <strong>Your roster is empty</strong>
-                      <p>Save a player to see them here.</p>
-                  </div>
+                                <span className="savedPlayerTag">
+                                    {player.savedTag}
+                                </span>
+                            </div>
+                        ))
+                      )}
               </div>
 
               <div className="sidebarBottom">
@@ -191,6 +268,16 @@ function App() {
                       Sign Out
                   </button>
               </div>
+                      </>
+              ) : (
+                  <div className="sidebarLoggedOut">
+                      <h3>Welcome to Clashalytics!</h3>
+                      <p>Log in to save and manage your players.</p>
+                      <button onClick={() => navigate("/login")}>
+                          Log In
+                      </button>
+                  </div>
+              )}
           </aside>
 
 
@@ -223,7 +310,7 @@ function App() {
                                   }}
                               />
 
-                              <button onClick={searchPlayer}>
+                              <button onClick={() => searchPlayer()}>
                                   Search
                               </button>
                           </div>
@@ -246,12 +333,14 @@ function App() {
                                   return;
                               }
 
-                              // We'll add the save-player API call here.
-                              console.log("Add player:", playerStats?.tag);
+                              if(isPlayerSaved) {
+                                  removePlayer();
+                              } else {
+                                  savePlayer();
+                              }
                           }}
                       >
-                          <span className="addPlayerIcon">+</span>
-                          Save Player
+                          {isPlayerSaved ? "Remove Player" : "Save Player"}
                       </button>
                   </div>
 
@@ -269,7 +358,7 @@ function App() {
                       >
                 <span>
                     {playerStats?.winrate != null
-                        ? `${playerStats.winrate}%`
+                        ? `${playerStats.winrate}`
                         : "—"}
                 </span>
                           <small>WIN RATE</small>

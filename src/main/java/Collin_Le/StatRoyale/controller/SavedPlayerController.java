@@ -44,7 +44,7 @@ public class SavedPlayerController {
             origins = "http://localhost:5173",
             allowCredentials = "true"
     )
-    @PostMapping("/delete-player")
+    @PostMapping("/remove-player")
     public ResponseEntity<Void> deletePlayer(@RequestParam String tag) {
         savedPlayerService.deleteSavedPlayer(tag);
         return ResponseEntity.status(204).build();
