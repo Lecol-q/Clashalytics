@@ -16,7 +16,7 @@ function App() {
     );
 
     const loadSavedPlayers = () => {
-        const url = "http://34.173.206.142:8080:8080/retrieve-saved-players";
+        const url = "http://localhost:8080/retrieve-saved-players";
         fetch(url, {
             credentials: "include"
         })
@@ -36,7 +36,7 @@ function App() {
     };
 
     const savePlayer = () => {
-        const url = "http://34.173.206.142:8080/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "http://localhost:8080/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -55,7 +55,7 @@ function App() {
     };
 
     const removePlayer = () => {
-        const url = "http://34.173.206.142:8080/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "http://localhost:8080/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -74,7 +74,7 @@ function App() {
     };
 
   useEffect(() => {
-      fetch("http://34.173.206.142:8080/me", {
+      fetch("http://localhost:8080/me", {
           credentials: "include"
       })
           .then((response) => {
@@ -106,7 +106,7 @@ function App() {
             return;
         }
 
-        const url = "http://34.173.206.142:8080/stats" +
+        const url = "http://localhost:8080/stats" +
             `?tag=${encodeURIComponent(playerTag.trim())}`;
 
         fetch(url)
@@ -261,7 +261,7 @@ function App() {
                   <button
                       className="signOutButton"
                       onClick={async () => {
-                          const response = await fetch("http://34.173.206.142:8080/logout", {
+                          const response = await fetch("http://localhost:8080/logout", {
                               method: "POST",
                               credentials: "include"
                           });
