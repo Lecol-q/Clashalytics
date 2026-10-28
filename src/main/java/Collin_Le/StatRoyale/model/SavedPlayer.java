@@ -13,16 +13,17 @@ public class SavedPlayer {
     private String savedTag;
     private String savedName;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne (optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
     // no args constructor
     public SavedPlayer() {}
 
-    public SavedPlayer(String savedTag, Users users) {
+    public SavedPlayer(String savedTag, Users users, String savedName) {
         this.savedTag = savedTag;
         this.users = users;
+        this.savedName = savedName;
     }
 
     public void setId(Long id) { this.id = id; }

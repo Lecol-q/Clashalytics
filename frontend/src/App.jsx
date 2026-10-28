@@ -9,6 +9,7 @@ function App() {
   const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [savedPlayers, setSavedPlayers] = useState([]);
 
   useEffect(() => {
       fetch("http://localhost:8080/me", {
@@ -26,6 +27,7 @@ function App() {
           })
           .then((user) => {
               setLoggedInUser(user);
+
               console.log(user);
           })
           .catch((err) => {
@@ -138,29 +140,59 @@ function App() {
               onClick={() => setIsSidebarOpen(false)}
           />
 
-          <aside className={`accountSidebar ${isSidebarOpen ? "open" : ""}`}>
-              <button
-                  className="closeSidebar"
-                  onClick={() => setIsSidebarOpen(false)}
-              >
-                  ✕
-              </button>
 
-              {loggedInUser ? (
-                  <>
-                      <h2>Account</h2>
-                      <p>{loggedInUser.username}</p>
-                  </>
-              ) : (
-                  <>
-                      <h2>Welcome</h2>
-                      <p>Log in to access your account.</p>
-                      <button onClick={() => navigate("/login")}>
-                          Log in
-                      </button>
-                  </>
-              )}
+          <aside className={`accountSidebar ${isSidebarOpen ? "open" : ""}`}>
+              <div className="sidebarHeader">
+                  <div className="accountIdentity">
+                      <div className="accountAvatar">
+                          {loggedInUser?.username?.charAt(0).toUpperCase()}
+                      </div>
+
+                      <div className="accountDetails">
+                          <span className="accountLabel">SIGNED IN AS</span>
+                          <strong>{loggedInUser?.username}</strong>
+                      </div>
+                  </div>
+
+                  <button
+                      className="closeSidebar"
+                      onClick={() => setIsSidebarOpen(false)}
+                      aria-label="Close sidebar"
+                  >
+                      ✕
+                  </button>
+              </div>
+
+              <div className="savedPlayersHeader">
+                  <h3>Saved Players</h3>
+                  <span className="savedCount">0</span>
+              </div>
+
+              <div className="savedPlayersList">
+                  {/* TODO: Map your fetched saved-player array here. */}
+                  {/* Each player should be a separate rectangle containing name + tag. */}
+
+
+                  <div className="emptyPlayers">
+                      <span className="emptyPlayersIcon">♜</span>
+                      <strong>Your roster is empty</strong>
+                      <p>Save a player to see them here.</p>
+                  </div>
+              </div>
+
+              <div className="sidebarBottom">
+                  <button
+                      className="signOutButton"
+                      onClick={() => {
+                          // TODO: Add your sign-out request here.
+                      }}
+                  >
+                      <span className="signOutIcon">↪</span>
+                      Sign Out
+                  </button>
+              </div>
           </aside>
+
 
           {/* This is the main dashboard */}
 

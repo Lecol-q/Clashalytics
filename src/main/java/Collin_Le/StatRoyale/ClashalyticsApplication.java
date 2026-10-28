@@ -2,6 +2,8 @@ package Collin_Le.StatRoyale;
 
 import Collin_Le.StatRoyale.config.Config;
 import Collin_Le.StatRoyale.config.SecurityConfig;
+import Collin_Le.StatRoyale.model.SavedPlayer;
+import Collin_Le.StatRoyale.service.SavedPlayerService;
 import Collin_Le.StatRoyale.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +22,6 @@ public class ClashalyticsApplication {
 		Config config = applicationContext.getBean(Config.class);
 		SecurityConfig securityConfig = applicationContext.getBean(SecurityConfig.class);
 		UserService userService = applicationContext.getBean(UserService.class);
-
+		SavedPlayerService savedPlayerService = applicationContext.getBean(SavedPlayerService.class);
 	}
 }

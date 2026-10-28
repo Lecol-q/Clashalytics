@@ -1,3 +1,58 @@
+/* Mobile */
+@media (max-width: 600px) {
+  .mainLayout {
+    padding: 20px 12px 28px;
+  }
+
+  .heroSection {
+    padding: 20px 8px 48px;
+  }
+
+  .heroContent h2 {
+    letter-spacing: -1px;
+  }
+
+  .heroContent p {
+    font-size: 0.95rem;
+  }
+
+  .heroSearch {
+    height: 54px;
+  }
+
+  .heroSearch button {
+    padding: 0 16px;
+  }
+
+  .statsPanel {
+    gap: 12px;
+    padding: 18px 14px;
+  }
+
+  .circlePlaceholder {
+    width: 88px;
+    height: 88px;
+  }
+
+  .circlePlaceholder::before {
+    width: 70px;
+    height: 70px;
+  }
+
+  .circlePlaceholder span {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroSection,
+  .statsPanel {
+    animation: none;
+    transition: none;
+  }
+}
+
+
 
 /* Overall page */
 .dashboard {
@@ -628,60 +683,6 @@
   }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .mainLayout {
-    padding: 20px 12px 28px;
-  }
-
-  .heroSection {
-    padding: 20px 8px 48px;
-  }
-
-  .heroContent h2 {
-    letter-spacing: -1px;
-  }
-
-  .heroContent p {
-    font-size: 0.95rem;
-  }
-
-  .heroSearch {
-    height: 54px;
-  }
-
-  .heroSearch button {
-    padding: 0 16px;
-  }
-
-  .statsPanel {
-    gap: 12px;
-    padding: 18px 14px;
-  }
-
-  .circlePlaceholder {
-    width: 88px;
-    height: 88px;
-  }
-
-  .circlePlaceholder::before {
-    width: 70px;
-    height: 70px;
-  }
-
-  .circlePlaceholder span {
-    font-size: 17px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroSection,
-  .statsPanel {
-    animation: none;
-    transition: none;
-  }
-}
-
 .addPlayerButton {
   display: inline-flex;
   align-items: center;
@@ -715,4 +716,213 @@
   color: #151722;
   font-size: 1.1rem;
   line-height: 1;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* misc */
+.accountSidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 18px 16px;
+  background: #11151d;
+  color: #f3f4f6;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Account Details */
+.accountIdentity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.accountAvatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f6c85f, #d99a35);
+  color: #171717;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.accountDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.accountLabel {
+  color: #9299a8;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.accountDetails strong {
+  overflow: hidden;
+  color: #fff;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.savedPlayersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0 14px;
+}
+
+.savedPlayersHeader h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.savedCount {
+  display: grid;
+  place-items: center;
+  min-width: 25px;
+  height: 25px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: rgba(246, 200, 95, 0.1);
+  color: #f6c85f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.savedPlayersList {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 3px 12px 0;
+}
+
+/* Each saved player rectangle */
+.savedPlayerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid #303746;
+  border-radius: 11px;
+  background: #191e28;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.savedPlayerCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(246, 200, 95, 0.65);
+  background: #202633;
+}
+
+.savedPlayerCard.selected {
+  border-color: #f6c85f;
+  background: rgba(246, 200, 95, 0.08);
+}
+
+.savedPlayerName {
+  overflow: hidden;
+  color: #f9fafb;
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.savedPlayerTag {
+  color: #9299a8;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+/* Empty roster */
+.emptyPlayers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 28px 12px;
+  border: 1px dashed #303746;
+  border-radius: 11px;
+  text-align: center;
+}
+
+.emptyPlayersIcon {
+  color: #f6c85f;
+  font-size: 25px;
+}
+
+.emptyPlayers strong {
+  font-size: 13px;
+}
+
+.emptyPlayers p {
+  margin: 0;
+  color: #9299a8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Sign out stays at the bottom */
+.sidebarBottom {
+  flex-shrink: 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.signOutButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #303746;
+  border-radius: 10px;
+  background: transparent;
+  color: #d1d5db;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.signOutButton:hover {
+  border-color: rgba(255, 115, 115, 0.35);
+  background: rgba(255, 100, 100, 0.08);
+  color: #ff8585;
+}
+
+.signOutIcon {
+  font-size: 18px;
 }
