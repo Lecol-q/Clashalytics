@@ -260,8 +260,18 @@ function App() {
               <div className="sidebarBottom">
                   <button
                       className="signOutButton"
-                      onClick={() => {
-                          // TODO: Add your sign-out request here.
+                      onClick={async () => {
+                          const response = await fetch("http://localhost:8080/logout", {
+                              method: "POST",
+                              credentials: "include"
+                          });
+
+                          if (response.ok) {
+                              setLoggedInUser(null);
+                              setSavedPlayers([]);
+                              setIsSidebarOpen(false);
+                              navigate("/");
+                          }
                       }}
                   >
                       <span className="signOutIcon">↪</span>
