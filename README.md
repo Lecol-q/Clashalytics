@@ -35,13 +35,17 @@ Every Clash Royale player has a unique player tag that can be used to look up th
 To find one:
 
 1. Select player name
-![[Pasted image 20261029191147.png]]
+<img width="750" height="613" alt="pt-home" src="https://github.com/user-attachments/assets/6ba3da07-d991-4ba7-b619-00cdefea6e3b" />
+
+
 
 2. Select player tag
-![[Pasted image 20261029191222.png]]
+<img width="750" height="613" alt="pt-profile" src="https://github.com/user-attachments/assets/a8b9d0d6-b93b-4cb5-92a8-34ceac659168" />
+
 
 3. Copy tag, or enter manually
-![[Pasted image 20261029191242.png]]
+<img width="750" height="613" alt="pt-copy" src="https://github.com/user-attachments/assets/44cdc844-1bf5-4d8c-90bb-44a9239e816a" />
+
 
 ### 2. Explore Player Statistic
 Enter the player tag into the search bar to retrieve their profiles.
