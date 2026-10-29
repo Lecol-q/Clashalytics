@@ -30,7 +30,7 @@ function Login() {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: new URLSearchParams({
+                        body: JSON.stringify({
                             username: username,
                             password: password
                         })
