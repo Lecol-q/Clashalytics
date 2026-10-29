@@ -111,11 +111,8 @@ The frontend is built with React and JavaScript, providing an interactive interf
 The backend exposes REST endpoints responsible for handling client requests and coordinating application functionality. Its layered structure separates responsibilities across controllers, services, repositories, and models.
 
 - **Controllers:** Handle HTTP requests and return appropriate responses.
-    
 - **Services:** Contain application logic and coordinate operations.
-    
 - **Repositories:** Manage database interactions through Spring Data JPA.
-    
 - **Models:** Represent application entities and data structures.
     
 
@@ -138,15 +135,9 @@ The production database is hosted on Neon, providing managed PostgreSQL infrastr
 ### Engineering Considerations
 
 Some of the primary engineering goals behind Clashalytics include:
-
 - Separation of concerns through a layered backend architecture.
-    
 - Secure password storage and session-based authentication.
-    
 - Persistent user data and player profile management.
-    
 - External API integration and JSON data processing.
-    
 - Containerized deployment and production environment configuration.
-    
 - Maintaining a clear separation between frontend presentation and backend application logic.
