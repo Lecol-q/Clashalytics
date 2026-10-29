@@ -1,6 +1,7 @@
 # Introducing Clashalytics
 
 ## Current Release: v1.0
+https://clashalytics.onrender.com/ 
 
 Clashalytics v1.0 establishes the foundation of the platform, focusing on player statistics, account management, and personalized player tracking.
 
