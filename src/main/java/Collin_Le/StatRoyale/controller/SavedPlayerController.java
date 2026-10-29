@@ -28,7 +28,7 @@ public class SavedPlayerController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app/",
+            origins = "http://https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @PostMapping("/save-player")
@@ -41,7 +41,7 @@ public class SavedPlayerController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app/",
+            origins = "http://https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @PostMapping("/remove-player")
@@ -51,7 +51,7 @@ public class SavedPlayerController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app/",
+            origins = "https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @GetMapping("/retrieve-saved-players")

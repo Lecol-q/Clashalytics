@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 
 @RestController
 public class UsersController {
@@ -29,7 +30,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app/",
+            origins = "https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @PostMapping("/register")
@@ -42,7 +43,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app/",
+            origins = "https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @PostMapping("/login")
@@ -63,11 +64,16 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "http://https://clashalytics.netlify.app//",
+            origins = "https://clashalytics.netlify.app",
             allowCredentials = "true"
     )
     @GetMapping("/me")
     public ResponseEntity<UserResponse> persistLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null || !authentication.isAuthenticated() || authentication instanceof  AnonymousAuthenticationToken) {
+            return ResponseEntity.status(401).build();
+        }
+
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Users user = userService.lookUpUser(username);
 

@@ -23,7 +23,7 @@ function Login() {
                         return;
                     }
 
-                    const url="http://34.173.206.142:8080/login";
+                    const url="https://clashalytics.pntr.dev/login";
                     fetch(url, {
                         method: 'POST',
                         credentials: "include",
