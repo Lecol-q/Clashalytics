@@ -16,7 +16,7 @@ function App() {
     );
 
     const loadSavedPlayers = () => {
-        const url = "https://clashalytics-backend.onrender.com/retrieve-saved-players";
+        const url = "/retrieve-saved-players";
         fetch(url, {
             credentials: "include"
         })
@@ -36,7 +36,7 @@ function App() {
     };
 
     const savePlayer = () => {
-        const url = "https://clashalytics-backend.onrender.com/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -55,7 +55,7 @@ function App() {
     };
 
     const removePlayer = () => {
-        const url = "https://clashalytics-backend.onrender.com/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -74,7 +74,7 @@ function App() {
     };
 
   useEffect(() => {
-      fetch("https://clashalytics-backend.onrender.com/me", {
+      fetch("/me", {
           method: "GET",
           credentials: "include"
       })
@@ -107,7 +107,7 @@ function App() {
             return;
         }
 
-        const url = "https://clashalytics-backend.onrender.com/stats" +
+        const url = "/stats" +
             `?tag=${encodeURIComponent(playerTag.trim())}`;
 
         fetch(url)
@@ -262,7 +262,7 @@ function App() {
                   <button
                       className="signOutButton"
                       onClick={async () => {
-                          const response = await fetch("https://clashalytics-backend.onrender.com/logout", {
+                          const response = await fetch("/logout", {
                               method: "POST",
                               credentials: "include"
                           });

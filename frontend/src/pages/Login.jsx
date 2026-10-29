@@ -23,7 +23,7 @@ function Login() {
                         return;
                     }
 
-                    const url="https://clashalytics-backend.onrender.com/login";
+                    const url="/login";
                     fetch(url, {
                         method: 'POST',
                         credentials: "include",

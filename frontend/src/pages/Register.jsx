@@ -22,7 +22,7 @@ function Register() {
                     return;
                 }
 
-                const url = "https://clashalytics-backend.onrender.com/register";
+                const url = "/register";
                 fetch(url, {
                     method: 'POST',
                     headers: {
@@ -37,7 +37,7 @@ function Register() {
                     .then((response) => {
                         if (response.status === 409) {
                             setError("Username Already Exists!")
-                            throw new Error(`HTTP error: ${response.status}`);
+                            return;
                         }
                         else if(response.status === 201) {
                             setError("");
@@ -45,7 +45,6 @@ function Register() {
                         } else {
                             setError("Registration failed. Please try again.");
                         }
-                        setError("Registration failed. Please try again.");
                     })
                     .catch(() => {
                         setError("Could not connect to server.");

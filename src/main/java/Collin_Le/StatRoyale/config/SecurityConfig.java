@@ -29,9 +29,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/user", "/register", "/me", "/stats", "/save-player", "/remove-player")
+                        .requestMatchers("/", "/login", "/user", "/register", "/me", "/stats", "/save-player", "/remove-player")
                         .permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .logout(logout -> logout
                         .invalidateHttpSession(true)
