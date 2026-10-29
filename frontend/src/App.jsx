@@ -75,6 +75,7 @@ function App() {
 
   useEffect(() => {
       fetch("https://clashalytics-backend.onrender.com/me", {
+          method: "GET",
           credentials: "include"
       })
           .then((response) => {
