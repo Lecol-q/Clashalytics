@@ -24,9 +24,10 @@ function Register() {
                 fetch(url, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'
                     },
-                    body: new URLSearchParams({
+                    credentials: "include",
+                    body: JSON.stringify({
                         username: username,
                         password: password
                     })
@@ -36,6 +37,16 @@ function Register() {
                             setError("Username Already Exists!")
                             throw new Error(`HTTP error: ${response.status}`);
                         }
+                        else if(response.status === 201) {
+                            setError("");
+                            window.location.href = "/login";
+                        } else {
+                            setError("Registration failed. Please try again.");
+                        }
+                        setError("Registration failed. Please try again.");
+                    })
+                    .catch(() => {
+                        setError("Could not connect to server.");
                     })
             }}>
 

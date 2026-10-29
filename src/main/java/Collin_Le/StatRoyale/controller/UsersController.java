@@ -1,5 +1,6 @@
 package Collin_Le.StatRoyale.controller;
 
+import Collin_Le.StatRoyale.model.AuthRequest;
 import Collin_Le.StatRoyale.model.UserResponse;
 import Collin_Le.StatRoyale.model.Users;
 import Collin_Le.StatRoyale.service.UserService;
@@ -34,8 +35,8 @@ public class UsersController {
             allowCredentials = "true"
     )
     @PostMapping("/register")
-    public ResponseEntity<Void> createNewUser(@RequestParam String username, @RequestParam String password) {
-        if(!userService.createUser(username, password)) {
+    public ResponseEntity<Void> createNewUser(@RequestBody AuthRequest authRequest) {
+        if(!userService.createUser(authRequest.username(), authRequest.password())) {
             return ResponseEntity.status(409).build();
         }
 
@@ -47,9 +48,9 @@ public class UsersController {
             allowCredentials = "true"
     )
     @PostMapping("/login")
-    public ResponseEntity<UserResponse> loginUser(@RequestParam String username, @RequestParam String password, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<UserResponse> loginUser(@RequestBody AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response) {
         try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.username(), authRequest.password()));
             SecurityContext context = SecurityContextHolder.createEmptyContext();
             context.setAuthentication(authentication);
             SecurityContextHolder.setContext(context);

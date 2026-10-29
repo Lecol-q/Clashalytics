@@ -28,16 +28,16 @@ function Login() {
                         method: 'POST',
                         credentials: "include",
                         headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
+                            'Content-Type': 'application/json'
                         },
                         body: new URLSearchParams({
                             username: username,
                             password: password
                         })
                     })
-                        .then((response) => {
+                        .then(async (response) => {
                             if(!response.ok) {
-                                throw new Error(`HTTP error: ${response.status}`);
+                                throw new Error("Invalid username or password.");
                             }
                             return response.json();
                         })
@@ -45,6 +45,10 @@ function Login() {
                             setLoggedUser(user);
                             console.log(user)
                             navigate("/");
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert(error.message);
                         })
             }}>
                 <input
