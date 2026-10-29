@@ -33,7 +33,6 @@ public class SecurityConfig {
                         .permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults())
                 .logout(logout -> logout
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")

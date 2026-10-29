@@ -1,11 +1,13 @@
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import {useState} from "react";
+
 
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     return (
         <div className="authPage">
@@ -39,7 +41,7 @@ function Register() {
                         }
                         else if(response.status === 201) {
                             setError("");
-                            window.location.href = "/login";
+                            navigate("/login");
                         } else {
                             setError("Registration failed. Please try again.");
                         }
