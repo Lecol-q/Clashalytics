@@ -16,7 +16,7 @@ function App() {
     );
 
     const loadSavedPlayers = () => {
-        const url = "https://clashalytics.pntr.dev/retrieve-saved-players";
+        const url = "https://clashalytics-backend.onrender.com/retrieve-saved-players";
         fetch(url, {
             credentials: "include"
         })
@@ -36,7 +36,7 @@ function App() {
     };
 
     const savePlayer = () => {
-        const url = "https://clashalytics.pntr.dev/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "https://clashalytics-backend.onrender.com/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -55,7 +55,7 @@ function App() {
     };
 
     const removePlayer = () => {
-        const url = "https://clashalytics.pntr.dev/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = "https://clashalytics-backend.onrender.com/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -74,7 +74,7 @@ function App() {
     };
 
   useEffect(() => {
-      fetch("https://clashalytics.pntr.dev/me", {
+      fetch("https://clashalytics-backend.onrender.com/me", {
           credentials: "include"
       })
           .then((response) => {
@@ -106,7 +106,7 @@ function App() {
             return;
         }
 
-        const url = "https://clashalytics.pntr.dev/stats" +
+        const url = "https://clashalytics-backend.onrender.com/stats" +
             `?tag=${encodeURIComponent(playerTag.trim())}`;
 
         fetch(url)
@@ -261,7 +261,7 @@ function App() {
                   <button
                       className="signOutButton"
                       onClick={async () => {
-                          const response = await fetch("https://clashalytics.pntr.dev/logout", {
+                          const response = await fetch("https://clashalytics-backend.onrender.com/logout", {
                               method: "POST",
                               credentials: "include"
                           });

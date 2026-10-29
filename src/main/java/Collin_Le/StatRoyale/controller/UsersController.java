@@ -30,7 +30,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "https://clashalytics.netlify.app",
+            origins = "https://clashalytics.onrender.com",
             allowCredentials = "true"
     )
     @PostMapping("/register")
@@ -43,7 +43,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "https://clashalytics.netlify.app",
+            origins = "https://clashalytics.onrender.com",
             allowCredentials = "true"
     )
     @PostMapping("/login")
@@ -64,7 +64,7 @@ public class UsersController {
     }
 
     @CrossOrigin(
-            origins = "https://clashalytics.netlify.app",
+            origins = "https://clashalytics.onrender.com",
             allowCredentials = "true"
     )
     @GetMapping("/me")

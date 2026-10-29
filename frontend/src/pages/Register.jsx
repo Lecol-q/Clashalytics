@@ -20,7 +20,7 @@ function Register() {
                     return;
                 }
 
-                const url = "https://clashalytics.pntr.dev/register";
+                const url = "https://clashalytics-backend.onrender.com/register";
                 fetch(url, {
                     method: 'POST',
                     headers: {
