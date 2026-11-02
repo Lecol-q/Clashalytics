@@ -1,5 +1,7 @@
 package Collin_Le.StatRoyale.model;
 
+import java.util.List;
+
 public class Player {
     // general information
     private String tag;
@@ -8,18 +10,20 @@ public class Player {
     private int battleCount;
     private int wins;
     private int losses;
+    private List<Card> currentDeck;
 
     // no argument constructor
     public Player(){}
 
     // parameterized constructor
-    public Player(String name, String tag, int trophies, int battleCount, int wins, int losses) {
+    public Player(String name, String tag, int trophies, int battleCount, int wins, int losses, List<Card> currentDeck) {
         this.name = name;
         this.tag = tag;
         this.trophies = trophies;
         this.battleCount = battleCount;
         this.wins = wins;
         this.losses = losses;
+        this.currentDeck = currentDeck;
     }
 
     // Player section
@@ -27,6 +31,7 @@ public class Player {
         System.out.println("Name: " + name + "\nTag: " + tag + "\nTrophies: " + trophies);
         System.out.println("*Battle stats*");
         System.out.println("Wins: " + wins + "\nLosses: " + losses);
+        System.out.println("Current deck" + currentDeck);
 
         return "Name: " + name + "\nTrophies: " + trophies + "\nWins: " + wins + "\nLosses: " + losses;
     }
@@ -74,6 +79,8 @@ public class Player {
     public void setTrophies(int Trophies){
         this.trophies = trophies;
     }
+
+    public void setCurrentDeck(List<Card> currentDeck) { this.currentDeck = currentDeck; }
 
 
 }

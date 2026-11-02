@@ -1,0 +1,12 @@
+.deck-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.deck-card img {
+    width: 100%;
+    max-width: 160px;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+}

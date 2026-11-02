@@ -2,16 +2,18 @@ package Collin_Le.StatRoyale.model;
 
 public class Card {
     private String name;
-    private String elixirCost;
+    private int elixirCost;
     private String rarity;
+    private String medium;
 
     // Empty constructor
     public Card(){}
 
-    public Card(String name, String elixirCost, String rarity){
+    public Card(String name, int elixirCost, String rarity, String medium){
         this.name = name;
         this.elixirCost = elixirCost;
         this.rarity = rarity;
+        this.medium = medium;
     }
 
     public void displayCardStats() {
@@ -23,7 +25,7 @@ public class Card {
         return name;
     }
 
-    public String getElixirCost(){
+    public int getElixirCost(){
         return elixirCost;
     }
 
@@ -36,7 +38,7 @@ public class Card {
         this.name = name;
     }
 
-    public void setElixirCost(String elixirCost){
+    public void setElixirCost(int elixirCost){
         this.elixirCost = elixirCost;
     }
 
@@ -47,4 +49,8 @@ public class Card {
     public String toString(){
         return name + " : " + elixirCost + " : " + rarity;
     }
+
+    public void setMedium(String medium) { this.medium = medium; }
+
+    public String getMedium() { return medium; }
 }

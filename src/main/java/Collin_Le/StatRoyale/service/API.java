@@ -7,10 +7,13 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 import tools.jackson.databind.ObjectMapper;
 
+import java.util.List;
+
 @Component
 public class API {
     public Player player;
     public Card card;
+    public List<Card> cards;
     Chest chest;
     String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
     String base_url = Config.getURL("BASE_URL");
@@ -42,6 +45,7 @@ public class API {
         }
     }
 
+    // dead code
     public void requestCardStats() {
         try {
             items = objectMapper.readValue(restClient.get().uri("/cards?limit=5").retrieve().body(String.class), Items.class);
@@ -51,6 +55,7 @@ public class API {
         }
     }
 
+    // dead code
     public void requestChests(String tag) {
         try {
             chests = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/upcomingchests", tag).retrieve().body(String.class), ChestList.class);
@@ -59,6 +64,4 @@ public class API {
             System.out.println(k);
         }
     }
-
-
 }

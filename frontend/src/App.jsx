@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import './App.css';
+import CurrentDeck from "./components/CurrentDeck";
 
 function App() {
   const [hasSearched, setHasSearched] = useState(false);
@@ -16,7 +17,7 @@ function App() {
     );
 
     const loadSavedPlayers = () => {
-        const url = "/retrieve-saved-players";
+        const url = `${import.meta.env.VITE_API_URL}` + "/retrieve-saved-players";
         fetch(url, {
             credentials: "include"
         })
@@ -36,7 +37,7 @@ function App() {
     };
 
     const savePlayer = () => {
-        const url = "/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url =  `${import.meta.env.VITE_API_URL}` + "/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -55,7 +56,7 @@ function App() {
     };
 
     const removePlayer = () => {
-        const url = "/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+        const url = `${import.meta.env.VITE_API_URL}` + "/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -107,8 +108,7 @@ function App() {
             return;
         }
 
-        const url = "/stats" +
-            `?tag=${encodeURIComponent(playerTag.trim())}`;
+        const url = `${import.meta.env.VITE_API_URL}` + "/stats" + `?tag=${encodeURIComponent(playerTag.trim())}`;
 
         fetch(url)
             .then((response) => {
@@ -329,6 +329,12 @@ function App() {
                   </section>
               )}
 
+              {/* Left side*/}
+              <section className={"deckPanel"}>
+                  <CurrentDeck cards={playerStats?.currentDeck || []} />
+              </section>
+
+              {/* Right side*/}
               <aside className={`statsPanel ${hasSearched ? "visible" : ""}`}>
                   <div className="playerStatsInfo">
                       <h2><p className="playerName">{playerStats?.name}</p></h2>

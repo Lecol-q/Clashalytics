@@ -13,7 +13,7 @@ public class PlayerController {
         this.api = api;
     }
 
-    @CrossOrigin(origins = "https://clashalytics.onrender.com")
+    @CrossOrigin(origins = {"https://clashalytics.onrender.com", "http://localhost:5173/"})
     @GetMapping("/stats")
     public Player getPlayer(@RequestParam String tag) {
         player = api.requestPlayerStats(tag);
