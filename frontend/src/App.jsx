@@ -329,12 +329,8 @@ function App() {
                   </section>
               )}
 
-              {/* Left side*/}
-              <section className={"deckPanel"}>
-                  <CurrentDeck cards={playerStats?.currentDeck || []} />
-              </section>
-
-              {/* Right side*/}
+              {hasSearched && (
+                  <>
               <aside className={`statsPanel ${hasSearched ? "visible" : ""}`}>
                   <div className="playerStatsInfo">
                       <h2><p className="playerName">{playerStats?.name}</p></h2>
@@ -382,6 +378,12 @@ function App() {
                       </div>
                   </div>
               </aside>
+
+              <section className="deckPanel">
+                <CurrentDeck player={playerStats} />
+              </section>
+                  </>
+                  )}
           </main>
 
       </div>

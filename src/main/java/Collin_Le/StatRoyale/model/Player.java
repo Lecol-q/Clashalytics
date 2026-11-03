@@ -82,5 +82,7 @@ public class Player {
 
     public void setCurrentDeck(List<Card> currentDeck) { this.currentDeck = currentDeck; }
 
+    public List<Card> getCurrentDeck() { return currentDeck; }
+
 
 }

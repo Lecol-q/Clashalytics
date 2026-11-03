@@ -1,19 +1,21 @@
 package Collin_Le.StatRoyale.model;
 
+import javax.swing.*;
+
 public class Card {
     private String name;
     private int elixirCost;
     private String rarity;
-    private String medium;
+    private IconUrls iconUrls;
 
     // Empty constructor
     public Card(){}
 
-    public Card(String name, int elixirCost, String rarity, String medium){
+    public Card(String name, int elixirCost, String rarity, IconUrls iconUrls){
         this.name = name;
         this.elixirCost = elixirCost;
         this.rarity = rarity;
-        this.medium = medium;
+        this.iconUrls = iconUrls;
     }
 
     public void displayCardStats() {
@@ -50,7 +52,11 @@ public class Card {
         return name + " : " + elixirCost + " : " + rarity;
     }
 
-    public void setMedium(String medium) { this.medium = medium; }
+    public void setIconUrls(IconUrls iconUrls) { this.iconUrls = iconUrls; }
 
-    public String getMedium() { return medium; }
+    public IconUrls getIconUrls() { return iconUrls; }
+
+    public String cardToString() {
+        return iconUrls.getMedium();
+    }
 }

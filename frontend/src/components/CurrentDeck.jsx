@@ -1,25 +1,23 @@
-
 import React from "react";
+import "./CurrentDeck.css";
 
-function CurrentDeck({ cards = [] }) {
+function CurrentDeck({ player }) {
+    const currentDeck = player?.currentDeck || [];
 
-    const averageElixir = cards.length
-        ? (cards.reduce((total, card) => total + card.elixirCost, 0) / cards.length).toFixed(1)
-        : "0.0";
+    console.log("Full player object:", player);
+    console.log("Player currentDeck:", player?.currentDeck);
 
     return (
         <div className="current-deck">
-            <div className="deck-header">
-                <h2>Current Deck</h2>
-                <span>Average Elixir: {averageElixir}</span>
-            </div>
+            <h2>Current Deck</h2>
 
             <div className="deck-grid">
-                {cards.map((card) => (
+                {currentDeck.map((card) => (
                     <div className="deck-card" key={card.id}>
-                        <img src={card.iconUrl} alt={card.name} />
-                        <p>{card.name}</p>
-                        <span>Level {card.level}</span>
+                        <img
+                            src={card.iconUrls?.medium}
+                            alt={card.name}
+                        />
                     </div>
                 ))}
             </div>
