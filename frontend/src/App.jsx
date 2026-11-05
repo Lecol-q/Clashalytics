@@ -96,7 +96,7 @@ function App() {
     };
 
     useEffect(() => {
-        fetch("/me", {
+        fetch(`${import.meta.env.VITE_API_URL}` + "/me", {
             method: "GET",
             credentials: "include"
         })

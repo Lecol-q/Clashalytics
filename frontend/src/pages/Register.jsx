@@ -22,7 +22,7 @@ function Register() {
                     return;
                 }
 
-                const url = "/register";
+                const url = `${import.meta.env.VITE_API_URL}` + "/register";
                 fetch(url, {
                     method: 'POST',
                     headers: {

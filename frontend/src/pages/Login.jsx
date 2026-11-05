@@ -23,7 +23,7 @@ function Login() {
                         return;
                     }
 
-                    const url="/login";
+                    const url= `${import.meta.env.VITE_API_URL}` + "/login";
                     fetch(url, {
                         method: 'POST',
                         credentials: "include",
