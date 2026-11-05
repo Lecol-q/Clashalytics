@@ -11,6 +11,7 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [savedPlayers, setSavedPlayers] = useState([]);
+  const [battlelog, setBattleLog] = useState(null);
 
     const isPlayerSaved = savedPlayers.some(
         (player) => player.savedTag === playerStats?.tag
@@ -74,6 +75,24 @@ function App() {
             });
     };
 
+    const loadBattleLog = (playerTag = tag) => {
+        const url = `${import.meta.env.VITE_API_URL}` + "/battlelog" + `?tag=${encodeURIComponent(playerTag.trim())}`;
+
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setBattleLog(data);
+            })
+            .catch((err) => {
+                console.error(`Fetch problem: ${err.message}`);
+            });
+    };
+
   useEffect(() => {
       fetch("/me", {
           method: "GET",
@@ -126,6 +145,11 @@ function App() {
             });
     };
 
+    const searchPlayerDashboard = (playerTag = tag) => {
+        searchPlayer(playerTag);
+        loadBattleLog(playerTag);
+    };
+
   // this is the main render block
   return (
       <div className={`dashboard ${hasSearched ? 'searched' : ''}`}>
@@ -160,7 +184,7 @@ function App() {
                 {/* This is the main toolbar*/}
               <button
                   className="searchButton"
-                  onClick={() => searchPlayer()}
+                  onClick={() => searchPlayerDashboard()}
                   aria-label="Search player"
               >
                 <svg
@@ -317,11 +341,11 @@ function App() {
                                   value={tag}
                                   onChange={(e) => setTag(e.target.value)}
                                   onKeyDown={(e) => {
-                                      if (e.key === "Enter") searchPlayer();
+                                      if (e.key === "Enter") searchPlayerDashboard();
                                   }}
                               />
 
-                              <button onClick={() => searchPlayer()}>
+                              <button onClick={() => searchPlayerDashboard()}>
                                   Search
                               </button>
                           </div>

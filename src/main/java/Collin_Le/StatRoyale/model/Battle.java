@@ -1,14 +1,16 @@
 package Collin_Le.StatRoyale.model;
 
+import java.util.List;
+
 public class Battle {
     String type;
     String battleTime;
     GameMode gameMode;
-    Team team;
-    Opponent opponent;
+    List<Team> team;
+    List<Opponent> opponent;
 
     // constructor
-    public Battle(String type, String battleTime, GameMode gameMode, Team team, Opponent opponent) {
+    public Battle(String type, String battleTime, GameMode gameMode, List<Team> team, List<Opponent> opponent) {
         this.type = type;
         this.battleTime = battleTime;
         this.gameMode = gameMode;
@@ -20,13 +22,13 @@ public class Battle {
     public String getType() { return type; }
     public String getBattleTime() { return battleTime; }
     public GameMode getGameMode() { return gameMode; }
-    public Team getTeam() { return team; }
-    public Opponent getOpponent() {return opponent; }
+    public List<Team> getTeam() { return team; }
+    public List<Opponent> getOpponent() {return opponent; }
 
     // setters
     public void setType(String type) { this.type = type; }
     public void setBattleTime(String battleTime) { this.battleTime = battleTime; }
     public void setGameMode(GameMode gameMode) { this.gameMode = gameMode; }
-    public void setTeam(Team team) { this.team = team; }
-    public void setOpponent(Opponent opponent) { this.opponent = opponent; }
+    public void setTeam(List<Team> team) { this.team = team; }
+    public void setOpponent(List<Opponent> opponent) { this.opponent = opponent; }
 }

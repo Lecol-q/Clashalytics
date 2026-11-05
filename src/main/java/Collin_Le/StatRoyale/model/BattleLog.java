@@ -3,6 +3,7 @@ package Collin_Le.StatRoyale.model;
 import java.util.List;
 
 public class BattleLog {
+    Battle battle;
     List<Battle> battleLog;
 
     public BattleLog() {}
@@ -12,7 +13,10 @@ public class BattleLog {
     }
 
     public String displayBattleLog() {
-        return "Battle Log: " + battleLog;
+
+        System.out.println(battleLog);
+
+        return "Battle Log: " + battleLog.toString();
     }
 
     public List<Battle> getBattleLog() { return battleLog; }

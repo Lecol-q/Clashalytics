@@ -5,6 +5,7 @@ import Collin_Le.StatRoyale.model.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
+import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.List;
 public class API {
     public Player player;
     public Card card;
-    public BattleLog battleLog;
     public List<Card> cards;
     Chest chest;
     String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
@@ -48,8 +48,11 @@ public class API {
 
     public BattleLog requestBattleLog(String tag) {
         try {
-            battleLog = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/battlelog", tag).retrieve().body(String.class), BattleLog.class);
+            List<Battle> battle = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/battlelog", tag).retrieve().body(String.class), new TypeReference<List<Battle>>() {});
+            BattleLog battleLog = new BattleLog(battle);
+            battleLog.displayBattleLog();
             return battleLog;
+
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
             return null;

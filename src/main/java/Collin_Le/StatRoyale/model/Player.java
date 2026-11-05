@@ -33,7 +33,7 @@ public class Player {
         System.out.println("*Battle stats*");
         System.out.println("Wins: " + wins + "\nLosses: " + losses);
         System.out.println("Current deck" + currentDeck);
-        System.out.println("Clan: " + clan);
+        System.out.println("Clan: " + clan.getName());
 
         return "Name: " + name + "\nTrophies: " + trophies + "Clan: " + clan + "\nWins: " + wins + "\nLosses: " + losses;
     }

@@ -5,7 +5,7 @@ import java.util.List;
 public class Team {
     String name;
     String tag;
-    int trophyChange;
+    Integer trophyChange;
     int crowns;
     Clan clan;
     List<Card> cards;
@@ -13,7 +13,7 @@ public class Team {
     // constructors
     public Team() {}
 
-    public Team(String name, String tag, int trophyChange, int crowns, Clan clan, List<Card> cards) {
+    public Team(String name, String tag, Integer trophyChange, int crowns, Clan clan, List<Card> cards) {
         this.name = name;
         this.tag = tag;
         this.trophyChange = trophyChange;
@@ -31,7 +31,7 @@ public class Team {
         return tag;
     }
 
-    public int getTrophyChange() {
+    public Integer getTrophyChange() {
         return trophyChange;
     }
 
@@ -56,7 +56,7 @@ public class Team {
         this.tag = tag;
     }
 
-    public void setTrophyChange(int trophyChange) {
+    public void setTrophyChange(Integer trophyChange) {
         this.trophyChange = trophyChange;
     }
 
