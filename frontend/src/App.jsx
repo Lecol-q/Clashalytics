@@ -89,6 +89,7 @@ function App() {
             })
             .then((data) => {
                 setBattleLog(data);
+                console.log(battlelog[0]);
             })
             .catch((err) => {
                 console.error(`Fetch problem: ${err.message}`);
@@ -357,24 +358,26 @@ function App() {
                 )}
 
                 {hasSearched && (
-                    <>
-                        <section className="PlayerStats">
-                            <PlayerStats
-                                player={playerStats}
-                                loggedInUser={loggedInUser}
-                                isPlayerSaved={isPlayerSaved}
-                                savePlayer={savePlayer}
-                                removePlayer={removePlayer}
-                            />
-                        </section>
+                    <div className="dashboardLayout">
+                        <div className="dashboardLeft">
+                            <section className="PlayerStats">
+                                <PlayerStats
+                                    player={playerStats}
+                                    loggedInUser={loggedInUser}
+                                    isPlayerSaved={isPlayerSaved}
+                                    savePlayer={savePlayer}
+                                    removePlayer={removePlayer}
+                                />
+                            </section>
 
-                        <section className="deckPanel">
-                            <CurrentDeck player={playerStats}/>
-                        </section>
+                            <section className="deckPanel">
+                                <CurrentDeck player={playerStats}/>
+                            </section>
+                        </div>
                         <section className="battleLogPanel">
                             <BattleLog battlelog={battlelog}/>
                         </section>
-                    </>
+                    </div>
                 )}
             </main>
 

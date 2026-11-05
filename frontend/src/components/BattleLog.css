@@ -1,0 +1,80 @@
+/* BattleLog.css */
+
+.battleLog {
+    background: linear-gradient(145deg, #24283a, #1c1f2d);
+    border: 1px solid #383c50;
+    border-radius: 20px;
+    max-height: 750px;
+    overflow-y: auto;
+}
+
+.battleLog h2 {
+    text-align: center;
+    color: #f6c85f;
+}
+
+.battleCard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.battlePlayers {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.battleUser, .battleOpponent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.battleOpponent {
+    align-items: flex-end;
+}
+
+.deck-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.battleDeckCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.battleDeckCard img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.battleCard.victory {
+    background: linear-gradient(145deg, #1e3a2c, #1c1f2d);
+    border: 1px solid #2ecc71;
+}
+
+.battleCard.defeat {
+    background: linear-gradient(145deg, #3a2024, #1c1f2d);
+    border: 1px solid #e74c3c;
+}
+
+.battleCard.draw {
+    background: linear-gradient(145deg, #3a3520, #1c1f2d);
+    border: 1px solid #f6c85f;
+}

@@ -40,3 +40,10 @@
     text-align: center;
     color: #f6c85f;
 }
+
+.deckPanel {
+    background: linear-gradient(145deg, #24283a, #1c1f2d);
+    border: 1px solid #383c50;
+    border-radius: 20px;
+    padding: 20px;
+}

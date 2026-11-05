@@ -9,6 +9,26 @@
   font-family: system-ui, sans-serif;
 }
 
+.dashboardLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.dashboardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.battleLogPanel {
+  min-width: 0;
+  min-height: 0;
+}
+
 /* Top navigation */
 .navActions {
   display: flex;
