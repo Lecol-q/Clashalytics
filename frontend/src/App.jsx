@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import './App.css';
 import CurrentDeck from "./components/CurrentDeck";
+import BattleLog from "./components/BattleLog";
 
 function App() {
   const [hasSearched, setHasSearched] = useState(false);
@@ -269,7 +270,7 @@ function App() {
                       </>
                   ) : (
                         savedPlayers.map((player) => (
-                            <div className="savedPlayerCard" key={player.id} onClick={() => searchPlayer(player.savedTag)}>
+                            <div className="savedPlayerCard" key={player.id} onClick={() => searchPlayerDashboard(player.savedTag)}>
                                 <strong className="savedPlayerName">
                                     {player.savedName}
                                 </strong>
@@ -406,6 +407,9 @@ function App() {
               <section className="deckPanel">
                 <CurrentDeck player={playerStats} />
               </section>
+                      <section className="battleLogPanel">
+                          <BattleLog battlelog={battlelog} />
+                      </section>
                   </>
                   )}
           </main>
