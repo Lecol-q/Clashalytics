@@ -13,6 +13,7 @@ import java.util.List;
 public class API {
     public Player player;
     public Card card;
+    public BattleLog battleLog;
     public List<Card> cards;
     Chest chest;
     String apiKey = Config.getKey("CLASH_ROYALE_API_KEY");
@@ -39,6 +40,16 @@ public class API {
             player = objectMapper.readValue(restClient.get().uri("/players/{playerTag}", tag).retrieve().body(String.class), Player.class);
             player.displayPlayerStats();
             return player;
+        } catch(HttpClientErrorException.NotFound k) {
+            System.out.println(k);
+            return null;
+        }
+    }
+
+    public BattleLog requestBattleLog(String tag) {
+        try {
+            battleLog = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/battlelog", tag).retrieve().body(String.class), BattleLog.class);
+            return battleLog;
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
             return null;

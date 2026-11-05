@@ -10,6 +10,7 @@ public class Player {
     private int battleCount;
     private int wins;
     private int losses;
+    private Clan clan;
     private List<Card> currentDeck;
 
     // no argument constructor
@@ -32,8 +33,9 @@ public class Player {
         System.out.println("*Battle stats*");
         System.out.println("Wins: " + wins + "\nLosses: " + losses);
         System.out.println("Current deck" + currentDeck);
+        System.out.println("Clan: " + clan);
 
-        return "Name: " + name + "\nTrophies: " + trophies + "\nWins: " + wins + "\nLosses: " + losses;
+        return "Name: " + name + "\nTrophies: " + trophies + "Clan: " + clan + "\nWins: " + wins + "\nLosses: " + losses;
     }
 
     // getters
@@ -67,6 +69,10 @@ public class Player {
         return String.format("%.0f%%", winrate);
     }
 
+    public Clan getClan() {
+        return clan;
+    }
+
     // setter
     public void setName(){
         this.name = name;
@@ -83,6 +89,10 @@ public class Player {
     public void setCurrentDeck(List<Card> currentDeck) { this.currentDeck = currentDeck; }
 
     public List<Card> getCurrentDeck() { return currentDeck; }
+
+    public void setClan(Clan clan) {
+        this.clan = clan;
+    }
 
 
 }
