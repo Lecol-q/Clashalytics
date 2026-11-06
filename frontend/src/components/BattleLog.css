@@ -3,8 +3,7 @@
 .battleLog {
     background: linear-gradient(145deg, #24283a, #1c1f2d);
     border: 1px solid #383c50;
-    border-radius: 20px;
-    max-height: 750px;
+    max-height: 1000px;
     overflow-y: auto;
 }
 

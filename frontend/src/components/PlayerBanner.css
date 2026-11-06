@@ -13,7 +13,32 @@
     background-color: #1C1F2DFF;
 }
 
+.bannerExpandButton {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
 
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.expandedTrophyChart {
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.2s ease;
+}
+
+.expandedTrophyChart.expanded {
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height 0.9s ease, opacity 0.6s ease;
+}
 
 .playerIdentity {
     display: flex;
@@ -80,15 +105,36 @@
 @media (max-width: 550px) {
     .playerBanner {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 25px 20px 40px;
     }
 
     .playerIdentity {
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .playerLevel,
+    .playerTrophies {
+        text-align: center;
     }
 
     .playerExtraStats {
-        justify-content: space-between;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .playerStat {
+        align-items: center;
+        text-align: center;
+    }
+
+    .playerActions {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 }

@@ -6,6 +6,7 @@ import BattleLog from "./components/BattleLog";
 import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
+import TrophyChart from "./components/TrophyChart.jsx";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -157,6 +158,22 @@ function App() {
         loadBattleLog(playerTag);
     };
 
+    const getTrophyChartData = () => {
+        const battles = battlelog?.battleLog || [];
+        const recentBattles = [...battles].reverse();
+
+        let totalTrophies = 0;
+
+        return recentBattles.map((battle, index) => {
+            totalTrophies += battle.team?.[0]?.trophyChange ?? 0;
+
+            return {
+                battle: index + 1,
+                trophies: totalTrophies
+            };
+        });
+    };
+
     // this is the main render block
     return (
         <div className={`dashboard ${hasSearched ? 'searched' : ''}`}>
@@ -167,13 +184,17 @@ function App() {
                 setIsSidebarOpen={setIsSidebarOpen}
 
             />
-            <PlayerBanner
-                player={player}
-                loggedInUser={loggedInUser}
-                isPlayerSaved={isPlayerSaved}
-                savePlayer={savePlayer}
-                removePlayer={removePlayer}
-            />
+            <div className="BannerComponent">
+                <PlayerBanner
+                    player={player}
+                    loggedInUser={loggedInUser}
+                    isPlayerSaved={isPlayerSaved}
+                    savePlayer={savePlayer}
+                    removePlayer={removePlayer}
+                    chartData={getTrophyChartData()}
+                />
+            </div>
+
             <div
                 className={`sidebarOverlay ${isSidebarOpen ? "open" : ""}`}
                 onClick={() => setIsSidebarOpen(false)}
@@ -206,7 +227,7 @@ function App() {
 
                         <div className="savedPlayersHeader">
                             <h3>Saved Players</h3>
-                            <span className="savedCount">0</span>
+                            <span className="savedCount">{savedPlayers.length}</span>
                         </div>
 
                         <div className="savedPlayersList">

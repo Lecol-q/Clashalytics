@@ -1,8 +1,11 @@
 import "./PlayerBanner.css"
 import {useNavigate} from "react-router-dom";
-function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removePlayer}) {
+import { useState } from "react";
+import TrophyChart from "./TrophyChart.jsx";
+function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removePlayer, chartData}) {
 
     const navigate = useNavigate();
+    const [isExpanded, setIsExpanded] = useState(false);
     if(!player) return null;
 
     return (
@@ -58,6 +61,18 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
                 >
                     {isPlayerSaved ? "Remove Player" : "Save Player"}
                 </button>
+            </div>
+
+            <button
+                className="bannerExpandButton"
+                onClick={() => setIsExpanded(!isExpanded)}
+                aria-expanded={isExpanded}
+            >
+                {isExpanded ? "⌃" : "⌄"}
+            </button>
+
+            <div className={`expandedTrophyChart ${isExpanded ? "expanded" : ""}`}>
+                <TrophyChart data={chartData} />
             </div>
         </section>
     );

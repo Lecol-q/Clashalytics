@@ -1,9 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import "./PlayerStats.css";
 
-function PlayerStats({player, loggedInUser, isPlayerSaved, savePlayer, removePlayer}) {
+function PlayerStats({player}) {
     const playerStats = player;
-    const navigate = useNavigate();
 
     return (
         <aside className={`statsPanel visible`}>

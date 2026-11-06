@@ -178,6 +178,9 @@
     padding: 24px;
     box-sizing: border-box;
 
+    display: flex;
+    flex-direction: column;
+
     background: #16181d;
     color: white;
     border-left: 1px solid #30333a;
@@ -517,6 +520,7 @@
     line-height: 1.5;
 }
 
+
 /* Sign out stays at the bottom */
 .sidebarBottom {
     flex-shrink: 0;
@@ -584,3 +588,9 @@
         padding: 0 16px;
     }
 }
+
+.BannerComponent {
+    width: 100%;
+    display: flex;
+}
+
