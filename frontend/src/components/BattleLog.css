@@ -8,11 +8,6 @@
     overflow-y: auto;
 }
 
-.battleLog h2 {
-    text-align: center;
-    color: #f6c85f;
-}
-
 .trophies {
     text-align: end;
 }
@@ -22,6 +17,10 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    border: 1px solid #1c1f2d;
+    border-radius: 20px;
+    padding: 2px;
+    background-color: #1c1f2d;
 
 }
 
@@ -54,15 +53,13 @@
 }
 
 .blueCrown {
-    width: 40px;
-    height: 40px;
-    transform: translateX(12px);
+    width: 20px;
+    height: 20px;
 }
 
 .redCrown {
-    width: 23px;
-    height: 23px;
-    transform: translateX(-5px);
+    width: 22px;
+    height: 22px;
 }
 
 .trophyIcon {

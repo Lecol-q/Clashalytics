@@ -39,7 +39,6 @@ function BattleLog({battlelog}) {
 
     return (
         <div className="battleLog">
-            <h2>Recent Battles</h2>
             {battles.map((battle, index) => {
                 const userTeam = battle.team?.[0];
                 const opponent = battle.opponent?.[0];
