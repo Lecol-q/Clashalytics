@@ -1,5 +1,8 @@
 import "./BattleLog.css";
 import React from "react";
+import trophyIcon from "../assets/trophy.png";
+import blueCrown from "../assets/blue_crown.png";
+import redCrown from "../assets/red_crown.png";
 
 function BattleLog({battlelog}) {
     console.log("Battlelog prop: ", battlelog);
@@ -19,8 +22,18 @@ function BattleLog({battlelog}) {
     function trophySign(userTeam, opponent) {
         if (battleResult(userTeam, opponent) === "Victory" || battleResult(userTeam, opponent) === "Draw") {
             return "+";
-        } else {
-            return "-";
+        }
+    }
+
+    function gameModeType(type) {
+        if(type === "pathOfLegend") {
+            return "Ranked Mode";
+        }
+        else if(type === "trail") {
+            return "Trophy Road";
+        }
+        else if(type === "friendly") {
+            return "Friendly"
         }
     }
 
@@ -30,13 +43,27 @@ function BattleLog({battlelog}) {
             {battles.map((battle, index) => {
                 const userTeam = battle.team?.[0];
                 const opponent = battle.opponent?.[0];
+                const type = battle.type;
                 return (
                     <div className={`battleCard ${battleResult(userTeam, opponent).toLowerCase()}`} key={index}>
 
                         {/* battle heading */}
                         <div className="gameHeading">
-                            <span>{battleResult(userTeam, opponent)}</span>
-                            <span>{trophySign(userTeam, opponent)}{userTeam.trophyChange}</span>
+                            <span>{gameModeType(type)}</span>
+
+                            <span className="battleScore">
+                                <img className="blueCrown" src={blueCrown}/>
+
+                                <span>{userTeam.crowns} {battleResult(userTeam, opponent)} {opponent.crowns}</span>
+
+                                <img className="redCrown" src={redCrown}/>
+                            </span>
+
+                            <span className="trophies">
+                                <img className="trophyIcon" src={trophyIcon}/>
+                                {trophySign(userTeam, opponent)}
+                                {userTeam.trophyChange}
+                            </span>
                         </div>
                         {/* player information*/}
                         <div className="battlePlayers">

@@ -4,14 +4,14 @@ import javax.swing.*;
 
 public class Card {
     private String name;
-    private int elixirCost;
+    private Integer elixirCost;
     private String rarity;
     private IconUrls iconUrls;
 
     // Empty constructor
     public Card(){}
 
-    public Card(String name, int elixirCost, String rarity, IconUrls iconUrls){
+    public Card(String name, Integer elixirCost, String rarity, IconUrls iconUrls){
         this.name = name;
         this.elixirCost = elixirCost;
         this.rarity = rarity;
@@ -27,7 +27,7 @@ public class Card {
         return name;
     }
 
-    public int getElixirCost(){
+    public Integer getElixirCost(){
         return elixirCost;
     }
 
