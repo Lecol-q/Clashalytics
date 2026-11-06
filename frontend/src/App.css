@@ -1,52 +1,52 @@
 /* Overall page */
 .dashboard {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #151722;
-  color: #f5f5f7;
-  font-family: system-ui, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #151722;
+    color: #f5f5f7;
+    font-family: system-ui, sans-serif;
 }
 
 .dashboardLayout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: stretch;
-  width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
 }
 
 .dashboardLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
 }
 
 .battleLogPanel {
-  min-width: 0;
-  min-height: 0;
+    min-width: 0;
+    min-height: 0;
 }
 
 /* Top navigation */
 .navActions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
 }
 
 .toolBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 16px 24px;
 }
 
 /* Continue with your existing desktop styles here... */
-  .userButton {
+.userButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,50 +62,19 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.2s ease;
-  }
+}
 
-  .userButton:hover {
+.userButton:hover {
     background: rgba(246, 200, 95, 0.12);
-  }
+}
 
-  .toolBar h1 {
+.toolBar h1 {
     margin: 0;
     font-size: 1.6rem;
     letter-spacing: -0.5px;
-  }
+}
 
-  /* Search field */
-  .searchBox {
-    display: flex;
-    align-items: center;
-    width: 260px;
-    height: 42px;
-    border: 1px solid #555b75;
-    border-radius: 999px;
-    overflow: hidden;
-    background: #202332;
-    transition: border-color 200ms ease;
-  }
-
-  .searchBox:focus-within {
-    border-color: #f6c85f;
-  }
-
-  .searchBox input {
-    flex: 1;
-    min-width: 0;
-    padding: 10px 14px;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: #f5f5f7;
-  }
-
-  .searchBox input::placeholder {
-    color: #9297ad;
-  }
-
-  .searchButton {
+.searchButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,15 +85,15 @@
     color: #151722;
     cursor: pointer;
     transition: background 200ms ease;
-  }
+}
 
-  .searchButton:hover {
+.searchButton:hover {
     background: #ffdb83;
-  }
+}
 
 
-  /* Character section */
-  .characterPanel {
+/* Character section */
+.characterPanel {
     flex: 1;
     min-width: 0;
     padding: 32px 40px;
@@ -136,20 +105,20 @@
     text-align: center;
 
     transition: flex 600ms ease;
-  }
+}
 
-  .characterPanel h2 {
+.characterPanel h2 {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     margin-bottom: 8px;
-  }
+}
 
-  .characterPanel p {
+.characterPanel p {
     color: #a9adbe;
     margin-top: 0;
-  }
+}
 
-  /* Temporary artwork placeholder */
-  .characterPlaceholder {
+/* Temporary artwork placeholder */
+.characterPlaceholder {
     width: 80%;
     max-width: 420px;
     aspect-ratio: 3 / 4;
@@ -161,43 +130,30 @@
     background: linear-gradient(145deg, #292d42, #1d2030);
     color: #a9adbe;
     border: 1px dashed #555b75;
-  }
+}
 
-  /* Smaller screens */
-  @media (max-width: 600px) {
+/* Smaller screens */
+@media (max-width: 600px) {
     .navActions {
-      padding: 16px;
-      gap: 12px;
+        padding: 16px;
+        gap: 12px;
     }
 
     .toolBar h1 {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 
     .searchBox input {
-      width: 130px;
+        width: 130px;
     }
 
     .characterPanel {
-      padding: 20px;
+        padding: 20px;
     }
-  }
+}
 
 
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    font-size: 1.6rem;
-    letter-spacing: -0.5px;
-  }
-
-  .brand svg {
-    flex-shrink: 0;
-  }
-
-  .loginButton {
+.loginButton {
     background: transparent;
     color: #f6c85f;
     border: 1px solid #f6c85f;
@@ -206,13 +162,13 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s ease;
-  }
+}
 
-  .loginButton:hover {
+.loginButton:hover {
     background: rgba(246, 200, 95, 0.12);
-  }
+}
 
-  .accountSidebar {
+.accountSidebar {
     position: fixed;
     top: 0;
     right: 0;
@@ -231,14 +187,14 @@
     transform: translateX(100%);
     transition: transform 0.3s ease;
     visibility: hidden;
-  }
+}
 
-  .accountSidebar.open {
+.accountSidebar.open {
     transform: translateX(0);
     visibility: visible;
-  }
+}
 
-  .sidebarOverlay {
+.sidebarOverlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
@@ -247,46 +203,44 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
+}
 
-  .sidebarOverlay.open {
+.sidebarOverlay.open {
     opacity: 1;
     visibility: visible;
-  }
+}
 
-  .accountSidebar h2 {
+.accountSidebar h2 {
     margin-top: 40px;
     margin-bottom: 20px;
-  }
+}
 
-  .accountSidebar p {
+.accountSidebar p {
     color: #b8bbc4;
     margin-bottom: 12px;
-  }
+}
 
-  .accountSidebar button {
+.accountSidebar button {
     cursor: pointer;
     padding: 10px 14px;
     border: none;
     border-radius: 6px;
     background: #292d36;
     color: white;
-  }
+}
 
-  .accountSidebar button:hover {
+.accountSidebar button:hover {
     background: #3a3f4a;
-  }
+}
 
-  .accountSidebar .closeSidebar {
+.accountSidebar .closeSidebar {
     display: block;
     margin-left: auto;
-  }
+}
 
 
-
-
-  /* Main content */
-  .mainLayout {
+/* Main content */
+.mainLayout {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -294,10 +248,10 @@
     min-height: 0;
     padding: 24px 20px 40px;
     box-sizing: border-box;
-  }
+}
 
-  /* Landing screen */
-  .heroSection {
+/* Landing screen */
+.heroSection {
     display: flex;
     flex: 1;
     width: 100%;
@@ -307,40 +261,40 @@
     box-sizing: border-box;
     text-align: center;
     animation: heroEnter 650ms ease both;
-  }
+}
 
-  .heroContent {
+.heroContent {
     width: 100%;
     max-width: 700px;
-  }
+}
 
-  .heroEyebrow {
+.heroEyebrow {
     display: inline-block;
     margin-bottom: 20px;
     color: #f6c85f;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 3px;
-  }
+}
 
-  .heroContent h2 {
+.heroContent h2 {
     margin: 0;
     font-size: clamp(2.4rem, 6vw, 4.4rem);
     line-height: 1.1;
     letter-spacing: -2px;
     color: #f5f5f7;
-  }
+}
 
-  .heroContent p {
+.heroContent p {
     max-width: 480px;
     margin: 22px auto 32px;
     color: #a9adbe;
     line-height: 1.7;
     font-size: 1rem;
-  }
+}
 
-  /* Large landing search */
-  .heroSearch {
+/* Large landing search */
+.heroSearch {
     display: flex;
     align-items: center;
     width: 100%;
@@ -354,14 +308,14 @@
     border-radius: 16px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
     transition: border-color 200ms ease, box-shadow 200ms ease;
-  }
+}
 
-  .heroSearch:focus-within {
+.heroSearch:focus-within {
     border-color: #f6c85f;
     box-shadow: 0 0 0 4px rgba(246, 200, 95, 0.1);
-  }
+}
 
-  .heroSearch input {
+.heroSearch input {
     flex: 1;
     min-width: 0;
     height: 100%;
@@ -371,13 +325,13 @@
     border: none;
     outline: none;
     font-size: 1rem;
-  }
+}
 
-  .heroSearch input::placeholder {
+.heroSearch input::placeholder {
     color: #9297ad;
-  }
+}
 
-  .heroSearch button {
+.heroSearch button {
     height: 100%;
     padding: 0 22px;
     color: #151722;
@@ -387,46 +341,46 @@
     font-weight: 700;
     cursor: pointer;
     transition: background 200ms ease, transform 200ms ease;
-  }
+}
 
-  .heroSearch button:hover {
+.heroSearch button:hover {
     background: #ffdb83;
     transform: translateY(-1px);
-  }
+}
 
 
-  /* Entry animation */
-  @keyframes heroEnter {
+/* Entry animation */
+@keyframes heroEnter {
     from {
-      opacity: 0;
-      transform: translateY(18px);
+        opacity: 0;
+        transform: translateY(18px);
     }
 
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
-  .sidebarHeader {
+.sidebarHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     padding-bottom: 22px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
+}
 
 
-  /* Account Details */
-  .accountIdentity {
+/* Account Details */
+.accountIdentity {
     display: flex;
     align-items: center;
     gap: 12px;
     min-width: 0;
-  }
+}
 
-  .accountAvatar {
+.accountAvatar {
     display: grid;
     flex-shrink: 0;
     place-items: center;
@@ -437,43 +391,43 @@
     color: #171717;
     font-size: 18px;
     font-weight: 800;
-  }
+}
 
-  .accountDetails {
+.accountDetails {
     display: flex;
     flex-direction: column;
     gap: 5px;
     min-width: 0;
-  }
+}
 
-  .accountLabel {
+.accountLabel {
     color: #9299a8;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.3px;
-  }
+}
 
-  .accountDetails strong {
+.accountDetails strong {
     overflow: hidden;
     color: #fff;
     font-size: 14px;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
-  .savedPlayersHeader {
+.savedPlayersHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 24px 0 14px;
-  }
+}
 
-  .savedPlayersHeader h3 {
+.savedPlayersHeader h3 {
     margin: 0;
     font-size: 15px;
-  }
+}
 
-  .savedCount {
+.savedCount {
     display: grid;
     place-items: center;
     min-width: 25px;
@@ -484,9 +438,9 @@
     color: #f6c85f;
     font-size: 12px;
     font-weight: 700;
-  }
+}
 
-  .savedPlayersList {
+.savedPlayersList {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -494,10 +448,10 @@
     min-height: 0;
     overflow-y: auto;
     padding: 2px 3px 12px 0;
-  }
+}
 
-  /* Each saved player rectangle */
-  .savedPlayerCard {
+/* Each saved player rectangle */
+.savedPlayerCard {
     display: flex;
     flex-direction: column;
     gap: 7px;
@@ -507,36 +461,36 @@
     background: #191e28;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  }
+}
 
-  .savedPlayerCard:hover {
+.savedPlayerCard:hover {
     transform: translateY(-1px);
     border-color: rgba(246, 200, 95, 0.65);
     background: #202633;
-  }
+}
 
-  .savedPlayerCard.selected {
+.savedPlayerCard.selected {
     border-color: #f6c85f;
     background: rgba(246, 200, 95, 0.08);
-  }
+}
 
-  .savedPlayerName {
+.savedPlayerName {
     overflow: hidden;
     color: #f9fafb;
     font-size: 14px;
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
-  .savedPlayerTag {
+.savedPlayerTag {
     color: #9299a8;
     font-size: 11px;
     letter-spacing: 0.3px;
-  }
+}
 
-  /* Empty roster */
-  .emptyPlayers {
+/* Empty roster */
+.emptyPlayers {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -545,32 +499,32 @@
     border: 1px dashed #303746;
     border-radius: 11px;
     text-align: center;
-  }
+}
 
-  .emptyPlayersIcon {
+.emptyPlayersIcon {
     color: #f6c85f;
     font-size: 25px;
-  }
+}
 
-  .emptyPlayers strong {
+.emptyPlayers strong {
     font-size: 13px;
-  }
+}
 
-  .emptyPlayers p {
+.emptyPlayers p {
     margin: 0;
     color: #9299a8;
     font-size: 12px;
     line-height: 1.5;
-  }
+}
 
-  /* Sign out stays at the bottom */
-  .sidebarBottom {
+/* Sign out stays at the bottom */
+.sidebarBottom {
     flex-shrink: 0;
     padding-top: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
+}
 
-  .signOutButton {
+.signOutButton {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -585,48 +539,48 @@
     text-align: left;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
+}
 
-  .signOutButton:hover {
+.signOutButton:hover {
     border-color: rgba(255, 115, 115, 0.35);
     background: rgba(255, 100, 100, 0.08);
     color: #ff8585;
-  }
-
-  .signOutIcon {
-    font-size: 18px;
-  }
-
-@media (prefers-reduced-motion: reduce) {
-  .heroSection {
-    animation: none;
-    transition: none;
-  }
 }
 
-  /* Mobile */
-  @media (max-width: 600px) {
+.signOutIcon {
+    font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroSection {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
     .mainLayout {
-      padding: 20px 12px 28px;
+        padding: 20px 12px 28px;
     }
 
     .heroSection {
-      padding: 20px 8px 48px;
+        padding: 20px 8px 48px;
     }
 
     .heroContent h2 {
-      letter-spacing: -1px;
+        letter-spacing: -1px;
     }
 
     .heroContent p {
-      font-size: 0.95rem;
+        font-size: 0.95rem;
     }
 
     .heroSearch {
-      height: 54px;
+        height: 54px;
     }
 
     .heroSearch button {
-      padding: 0 16px;
+        padding: 0 16px;
     }
 }

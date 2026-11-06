@@ -1,0 +1,86 @@
+.toolBar {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    box-sizing: border-box;
+
+    background: #191d2c;
+    border-bottom: 1px solid #383c50;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    font-weight: bold;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.brand:hover {
+    opacity: 0.85;
+}
+
+.brand svg {
+    flex-shrink: 0;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    border-radius: 25px;
+    background: #30364c;
+
+    transition: width 0.3s ease;
+}
+
+.searchBox.expanded {
+    width: 250px;
+}
+
+.searchBox input {
+    width: 0;
+    min-width: 0;
+    opacity: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+
+    transition: width 0.3s ease, opacity 0.2s ease;
+}
+
+.searchBox.expanded input {
+    width: 100%;
+    opacity: 1;
+    padding-left: 15px;
+}
+
+.searchButton {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+

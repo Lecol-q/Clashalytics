@@ -4,6 +4,8 @@ import './App.css';
 import CurrentDeck from "./components/CurrentDeck";
 import BattleLog from "./components/BattleLog";
 import PlayerStats from "./components/PlayerStats.jsx";
+import NavBar from "./components/NavBar.jsx";
+import PlayerBanner from "./components/PlayerBanner.jsx";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -14,6 +16,7 @@ function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [savedPlayers, setSavedPlayers] = useState([]);
     const [battlelog, setBattleLog] = useState(null);
+    const [player, setPlayer] = useState(null);
 
     const isPlayerSaved = savedPlayers.some(
         (player) => player.savedTag === playerStats?.tag
@@ -39,8 +42,8 @@ function App() {
             });
     };
 
-    const savePlayer = () => {
-        const url = `${import.meta.env.VITE_API_URL}` + "/save-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+    const savePlayer = (playerTag) => {
+        const url = `${import.meta.env.VITE_API_URL}` + "/save-player" + `?tag=${encodeURIComponent(playerTag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -58,8 +61,8 @@ function App() {
             });
     };
 
-    const removePlayer = () => {
-        const url = `${import.meta.env.VITE_API_URL}` + "/remove-player" + `?tag=${encodeURIComponent(playerStats.tag)}`
+    const removePlayer = (playerTag) => {
+        const url = `${import.meta.env.VITE_API_URL}` + "/remove-player" + `?tag=${encodeURIComponent(playerTag)}`
         fetch(url, {
             method: 'POST',
             credentials: "include"
@@ -141,6 +144,7 @@ function App() {
             })
             .then((data) => {
                 setPlayerStats(data);
+                setPlayer(data);
                 setHasSearched(true);
             })
             .catch((err) => {
@@ -156,79 +160,20 @@ function App() {
     // this is the main render block
     return (
         <div className={`dashboard ${hasSearched ? 'searched' : ''}`}>
-            <header className="toolBar">
-                <h1 className="brand">
-                    <svg
-                        viewBox="0 0 24 24"
-                        width="28"
-                        height="28"
-                        fill="none"
-                        stroke="#f6c85f"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <path d="m2 7 5 5 5-8 5 8 5-5-2 13H4L2 7Z"/>
-                    </svg>
-                    <span>Clashalytics</span>
-                </h1>
+            <NavBar
+                tag={tag}
+                setTag={setTag}
+                searchPlayerDashboard={searchPlayerDashboard}
+                setIsSidebarOpen={setIsSidebarOpen}
 
-
-                <nav className="navActions">
-                    <div className="searchBox">
-                        <input
-                            type="text"
-                            placeholder="#PlayerTag"
-                            aria-label="Player tag"
-                            value={tag}
-                            onChange={e => setTag(e.target.value)}
-                        />
-
-                        {/* This is the main toolbar*/}
-                        <button
-                            className="searchButton"
-                            onClick={() => searchPlayerDashboard()}
-                            aria-label="Search player"
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="20"
-                                height="20"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                <circle cx="11" cy="11" r="7"/>
-                                <path d="m16 16 4 4"/>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <button
-                        className="userButton"
-                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        aria-label={"Login"}
-                        title={"Login"}
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="26"
-                            height="26"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
-                        </svg>
-                    </button>
-                </nav>
-            </header>
-
+            />
+            <PlayerBanner
+                player={player}
+                loggedInUser={loggedInUser}
+                isPlayerSaved={isPlayerSaved}
+                savePlayer={savePlayer}
+                removePlayer={removePlayer}
+            />
             <div
                 className={`sidebarOverlay ${isSidebarOpen ? "open" : ""}`}
                 onClick={() => setIsSidebarOpen(false)}

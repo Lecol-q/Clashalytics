@@ -12,12 +12,15 @@ public class Player {
     private int losses;
     private Clan clan;
     private List<Card> currentDeck;
+    private int expLevel;
+    private int kingTowerLevel;
 
     // no argument constructor
     public Player(){}
 
     // parameterized constructor
-    public Player(String name, String tag, int trophies, int battleCount, int wins, int losses, List<Card> currentDeck) {
+    public Player(String name, String tag, int trophies, int battleCount,
+                  int wins, int losses, List<Card> currentDeck, int expLevel, int kingTowerLevel) {
         this.name = name;
         this.tag = tag;
         this.trophies = trophies;
@@ -25,6 +28,8 @@ public class Player {
         this.wins = wins;
         this.losses = losses;
         this.currentDeck = currentDeck;
+        this.expLevel = expLevel;
+        this.kingTowerLevel = kingTowerLevel;
     }
 
     // Player section
@@ -34,6 +39,8 @@ public class Player {
         System.out.println("Wins: " + wins + "\nLosses: " + losses);
         System.out.println("Current deck" + currentDeck);
         System.out.println("Clan: " + clan.getName());
+        System.out.println("Level: " + expLevel);
+        System.out.println("King Level: " + kingTowerLevel);
 
         return "Name: " + name + "\nTrophies: " + trophies + "Clan: " + clan + "\nWins: " + wins + "\nLosses: " + losses;
     }
@@ -62,6 +69,8 @@ public class Player {
     public int getLosses() {
         return losses;
     }
+    public int getExpLevel() { return expLevel; }
+    public int getKingTowerLevel() { return kingTowerLevel; }
 
     public String getWinrate() {
         double winrate = (double) wins / battleCount * 100;
@@ -94,5 +103,6 @@ public class Player {
         this.clan = clan;
     }
 
-
+    public void setExpLevel(int expLevel) { this.expLevel = expLevel; }
+    public void setKingTowerLevel(int kingTowerLevel) { this.kingTowerLevel = kingTowerLevel; }
 }

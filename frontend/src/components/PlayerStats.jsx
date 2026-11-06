@@ -13,23 +13,6 @@ function PlayerStats({player, loggedInUser, isPlayerSaved, savePlayer, removePla
                 <p>Battle Count: {playerStats?.battleCount}</p>
                 <p>Wins: {playerStats?.wins}</p>
                 <p>Losses: {playerStats?.losses}</p>
-                <button
-                    className="addPlayerButton"
-                    onClick={() => {
-                        if (!loggedInUser) {
-                            navigate("/login");
-                            return;
-                        }
-
-                        if (isPlayerSaved) {
-                            removePlayer();
-                        } else {
-                            savePlayer();
-                        }
-                    }}
-                >
-                    {isPlayerSaved ? "Remove Player" : "Save Player"}
-                </button>
             </div>
 
             <div className="winLossCircle">
