@@ -5,22 +5,20 @@
 .deck-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    gap: 8px;
     width: 100%;
     max-width: 600px;
 }
 
 .deck-card {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #252a36;
-    border: 1px solid #3b4353;
-    border-radius: 10px;
-    padding: 4px;
+    background: transparent;
+    padding: 0;
+    border: none;
     min-height: 0;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 .deck-card:hover {
@@ -30,20 +28,85 @@
 
 .deck-card img {
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
+    margin: 0 auto;
     object-fit: contain;
-    border-radius: 6px;
 }
 
 .current-deck h2 {
-    text-align: center;
+    position: relative;
+    width: fit-content;
+    margin: 4px auto 18px;
+    padding-bottom: 8px;
+
     color: #f6c85f;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.current-deck h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 45px;
+    height: 3px;
+    border-radius: 3px;
+    background: #f6c85f;
 }
 
 .deckPanel {
+    width: min(100%, 650px);
+    box-sizing: border-box;
+    margin: 0 auto;
     background: linear-gradient(145deg, #24283a, #1c1f2d);
     border: 1px solid #383c50;
     border-radius: 20px;
-    padding: 20px;
+    padding: 10px 20px;
+}
+
+@media (max-width: 600px) {
+    .deckPanel {
+        width: 100%;
+        min-height: 230px;
+        box-sizing: border-box;
+        padding: 20px 14px;
+        border-radius: 14px;
+    }
+
+    .current-deck {
+        width: 100%;
+    }
+
+    .current-deck h2 {
+        font-size: 1.2rem;
+        margin-bottom: 18px;
+    }
+
+    .deck-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        max-width: none;
+    }
+
+    .deck-card {
+        width: 100%;
+    }
+
+    .deck-card img {
+        width: 100%;
+        max-width: 95px;
+        height: auto;
+    }
+
+    .deck-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
 }

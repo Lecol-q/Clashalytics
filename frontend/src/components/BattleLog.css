@@ -3,7 +3,7 @@
 .battleLog {
     background: linear-gradient(145deg, #24283a, #1c1f2d);
     border: 1px solid #383c50;
-    max-height: 1000px;
+    max-height: 704px;
     overflow-y: auto;
 }
 
@@ -134,4 +134,78 @@
 .battleCard.draw {
     background: linear-gradient(145deg, #3a3520, #1c1f2d);
     border: 1px solid #f6c85f;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .battleLog {
+        width: 100%;
+        height: 700px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        border-radius: 12px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .battleCard {
+        padding: 10px 8px;
+    }
+
+    .gameHeading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 8px
+    }
+
+    .battlePlayers {
+        gap: 12px;
+    }
+
+    .battleUser,
+    .battleOpponent {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .battleUser h3,
+    .battleOpponent h3 {
+        font-size: 14px;
+    }
+
+    .battleUser p,
+    .battleOpponent p {
+        font-size: 12px;
+    }
+
+    .battleResult {
+        gap: 5px;
+        font-size: 12px;
+    }
+
+    .blueCrown,
+    .redCrown,
+    .trophyIcon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .battleScore {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .deck-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 3px;
+    }
+
+    .battleDeckCard img {
+        border-radius: 4px;
+    }
+
+    .trophies {
+        font-size: 12px;
+    }
 }

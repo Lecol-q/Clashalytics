@@ -568,6 +568,12 @@
         padding: 20px 12px 28px;
     }
 
+    .dashboardLayout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        width: 100%;
+    }
+
     .heroSection {
         padding: 20px 8px 48px;
     }
@@ -590,7 +596,9 @@
 }
 
 .BannerComponent {
-    width: 100%;
     display: flex;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 

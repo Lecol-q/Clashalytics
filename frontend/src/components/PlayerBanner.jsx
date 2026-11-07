@@ -2,6 +2,7 @@ import "./PlayerBanner.css"
 import {useNavigate} from "react-router-dom";
 import { useState } from "react";
 import TrophyChart from "./TrophyChart.jsx";
+import PlayerStats from "./PlayerStats.jsx";
 function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removePlayer, chartData}) {
 
     const navigate = useNavigate();

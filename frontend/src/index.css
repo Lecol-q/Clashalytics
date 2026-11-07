@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 
 html,
 body,
@@ -9,6 +13,7 @@ body,
 
 body {
   min-width: 320px;
+  overflow-x: hidden;
 }
 
 #root {
