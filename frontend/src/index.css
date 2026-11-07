@@ -9,6 +9,7 @@ body,
   width: 100%;
   min-height: 100%;
   margin: 0;
+  background-color: #151722;
 }
 
 html,
@@ -23,4 +24,5 @@ body {
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
 }
