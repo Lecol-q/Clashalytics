@@ -11,6 +11,11 @@ body,
   margin: 0;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   min-width: 320px;
   overflow-x: hidden;
