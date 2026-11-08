@@ -41,3 +41,42 @@
 .authPage a {
     color: #f6c85f;
 }
+
+@media (max-width: 600px) {
+    .authPage {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 24px 18px;
+        justify-content: center;
+    }
+
+    .authPage form {
+        width: 100%;
+        max-width: 420px;
+        gap: 18px;
+    }
+
+    .authPage input {
+        width: 100%;
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    .authPage button {
+        width: 100%;
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    .authPage h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .authPage p,
+    .authPage a {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+}
