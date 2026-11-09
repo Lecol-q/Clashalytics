@@ -59,7 +59,7 @@ public class API {
         }
     }
 
-    // dead code
+    // dead code for now
     public void requestCardStats() {
         try {
             items = objectMapper.readValue(restClient.get().uri("/cards?limit=5").retrieve().body(String.class), Items.class);
@@ -69,7 +69,7 @@ public class API {
         }
     }
 
-    // dead code
+    // dead code, dead code
     public void requestChests(String tag) {
         try {
             chests = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/upcomingchests", tag).retrieve().body(String.class), ChestList.class);

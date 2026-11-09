@@ -14,6 +14,7 @@ public class Player {
     private List<Card> currentDeck;
     private int expLevel;
     private int kingTowerLevel;
+    private List<DeckPerformance> deckPerformances;
 
     // no argument constructor
     public Player(){}
@@ -82,6 +83,8 @@ public class Player {
         return clan;
     }
 
+    public List<DeckPerformance> getDeckPerformances() { return deckPerformances; }
+
     // setter
     public void setName(){
         this.name = name;
@@ -105,4 +108,8 @@ public class Player {
 
     public void setExpLevel(int expLevel) { this.expLevel = expLevel; }
     public void setKingTowerLevel(int kingTowerLevel) { this.kingTowerLevel = kingTowerLevel; }
+
+    public void setDeckPerformances(List<DeckPerformance> deckPerformances) {
+        this.deckPerformances = deckPerformances;
+    }
 }

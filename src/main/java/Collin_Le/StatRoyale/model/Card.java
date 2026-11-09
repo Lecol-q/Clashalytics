@@ -3,6 +3,7 @@ package Collin_Le.StatRoyale.model;
 import javax.swing.*;
 
 public class Card {
+    private int id;
     private String name;
     private Integer elixirCost;
     private String rarity;
@@ -11,7 +12,8 @@ public class Card {
     // Empty constructor
     public Card(){}
 
-    public Card(String name, Integer elixirCost, String rarity, IconUrls iconUrls){
+    public Card(int id, String name, Integer elixirCost, String rarity, IconUrls iconUrls){
+        this.id = id;
         this.name = name;
         this.elixirCost = elixirCost;
         this.rarity = rarity;
@@ -23,6 +25,8 @@ public class Card {
     }
 
     // getters
+    public Integer getId() { return id; }
+
     public String getName(){
         return name;
     }
@@ -36,6 +40,7 @@ public class Card {
     }
 
     // setters
+    public void setId(int id) { this.id = id; }
     public void setName(String name){
         this.name = name;
     }
