@@ -2,16 +2,17 @@ package Collin_Le.StatRoyale.service;
 
 import Collin_Le.StatRoyale.model.*;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class DeckPerformanceService {
     BattleLog battlelog;
     HashMap<List<Integer>, DeckPerformance> map = new HashMap<>();
 
-    public List<DeckPerformance> getDeckPerforamnce(String tag) {
+    public List<DeckPerformance> getDeckPerforamnce(BattleLog battlelog) {
         for(int i = 0; i < battlelog.getBattleLog().size(); i++) {
 
             Battle battle = battlelog.getBattleLog().get(i);

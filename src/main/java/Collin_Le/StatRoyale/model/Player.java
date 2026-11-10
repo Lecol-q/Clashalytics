@@ -15,13 +15,15 @@ public class Player {
     private int expLevel;
     private int kingTowerLevel;
     private List<DeckPerformance> deckPerformances;
+    private BattleLog battleLog;
 
     // no argument constructor
     public Player(){}
 
     // parameterized constructor
     public Player(String name, String tag, int trophies, int battleCount,
-                  int wins, int losses, List<Card> currentDeck, int expLevel, int kingTowerLevel) {
+                  int wins, int losses, List<Card> currentDeck, int expLevel,
+                  int kingTowerLevel, List<DeckPerformance> deckPerformances, BattleLog battleLog) {
         this.name = name;
         this.tag = tag;
         this.trophies = trophies;
@@ -31,6 +33,9 @@ public class Player {
         this.currentDeck = currentDeck;
         this.expLevel = expLevel;
         this.kingTowerLevel = kingTowerLevel;
+        this.deckPerformances = deckPerformances;
+        this.battleLog = battleLog;
+
     }
 
     // Player section
@@ -84,6 +89,7 @@ public class Player {
     }
 
     public List<DeckPerformance> getDeckPerformances() { return deckPerformances; }
+    public BattleLog getBattleLog() { return battleLog; }
 
     // setter
     public void setName(){
@@ -111,5 +117,9 @@ public class Player {
 
     public void setDeckPerformances(List<DeckPerformance> deckPerformances) {
         this.deckPerformances = deckPerformances;
+    }
+
+    public void setBattleLog(BattleLog battleLog) {
+        this.battleLog = battleLog;
     }
 }

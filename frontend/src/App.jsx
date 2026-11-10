@@ -6,7 +6,6 @@ import BattleLog from "./components/BattleLog";
 import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
-import TrophyChart from "./components/TrophyChart.jsx";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -16,7 +15,6 @@ function App() {
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [savedPlayers, setSavedPlayers] = useState([]);
-    const [battlelog, setBattleLog] = useState(null);
     const [player, setPlayer] = useState(null);
 
     const isPlayerSaved = savedPlayers.some(
@@ -81,25 +79,6 @@ function App() {
             });
     };
 
-    const loadBattleLog = (playerTag = tag) => {
-        const url = `${import.meta.env.VITE_API_URL}` + "/battlelog" + `?tag=${encodeURIComponent(playerTag.trim())}`;
-
-        fetch(url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setBattleLog(data);
-                console.log(battlelog[0]);
-            })
-            .catch((err) => {
-                console.error(`Fetch problem: ${err.message}`);
-            });
-    };
-
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}` + "/me", {
             method: "GET",
@@ -155,11 +134,10 @@ function App() {
 
     const searchPlayerDashboard = (playerTag = tag) => {
         searchPlayer(playerTag);
-        loadBattleLog(playerTag);
     };
 
     const getTrophyChartData = () => {
-        const battles = battlelog?.battleLog || [];
+        const battles = player?.battleLog?.battleLog || [];
         const recentBattles = [...battles].reverse();
 
         let totalTrophies = 0;
@@ -173,6 +151,8 @@ function App() {
             };
         });
     };
+
+    console.log("Full player object:", JSON.stringify(player, null, 2));
 
     // this is the main render block
     return (
@@ -341,7 +321,7 @@ function App() {
                             </section>
                         </div>
                         <section className="battleLogPanel">
-                            <BattleLog battlelog={battlelog}/>
+                            <BattleLog battlelog={player?.battleLog}/>
                         </section>
                     </div>
                 )}

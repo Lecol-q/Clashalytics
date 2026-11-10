@@ -4,30 +4,20 @@ import Collin_Le.StatRoyale.model.BattleLog;
 import Collin_Le.StatRoyale.model.Player;
 import Collin_Le.StatRoyale.service.API;
 import Collin_Le.StatRoyale.service.DeckPerformanceService;
+import Collin_Le.StatRoyale.service.PlayerService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PlayerController {
-    private final API api;
-    private final DeckPerformanceService dpService;
+    private final PlayerService playerService;
 
-    public PlayerController(API api, DeckPerformanceService dpService) {
-        this.api = api;
-        this.dpService = dpService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
     }
 
     @CrossOrigin(origins = {"https://clashalytics.onrender.com", "http://localhost:5173/"})
     @GetMapping("/stats")
     public Player getPlayer(@RequestParam String tag) {
-        Player player = api.requestPlayerStats(tag);
-        return player;
-    }
-
-    @CrossOrigin(origins = {"https://clashalytics.onrender.com", "http://localhost:5173/"})
-    @GetMapping("/battlelog")
-    public BattleLog getBattleLog(@RequestParam String tag) {
-        BattleLog battleLog = api.requestBattleLog(tag);
-        battleLog.displayBattleLog();
-        return battleLog;
+        return playerService.retrievePlayer(tag);
     }
 }
