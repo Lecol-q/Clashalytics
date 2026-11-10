@@ -9,6 +9,21 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
     const [isExpanded, setIsExpanded] = useState(false);
     if(!player) return null;
 
+    const deckPerformances = player.deckPerformances || [];
+
+    const getWinRate = (deck) => {
+        if (deck.numsOfBattle === 0) return 0;
+
+        return (deck.wins / deck.numOfBattle) * 100;
+    };
+
+    const sortedDecks = [...deckPerformances].sort(
+        (a, b) => getWinRate(b) - getWinRate(a)
+    );
+
+    const bestDeck = sortedDecks[0];
+    const worstDeck = sortedDecks[sortedDecks.length - 1];
+
     return (
         <section className="playerBanner">
 
@@ -74,6 +89,41 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
 
             <div className={`expandedTrophyChart ${isExpanded ? "expanded" : ""}`}>
                 <TrophyChart data={chartData} />
+                <div className="bestWorstDecks">
+                    {bestDeck && (
+                        <div className="bestDeck">
+                            <h3>Best Performing Deck</h3>
+                            <p>Win Rate: {getWinRate(bestDeck).toFixed(1)}%</p>
+
+                            <div className="deck-grid-banner">
+                                {bestDeck.deck.map((card) => (
+                                    <img
+                                        key={card.id}
+                                        src={card.iconUrls?.medium}
+                                        alt={card.name}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {worstDeck && (
+                        <div className="worstDeck">
+                            <h3>Worst Performing Deck</h3>
+                            <p>Win Rate: {getWinRate(worstDeck).toFixed(1)}%</p>
+
+                            <div className="deck-grid-banner">
+                                {worstDeck.deck.map((card) => (
+                                    <img
+                                        key={card.id}
+                                        src={card.iconUrls?.medium}
+                                        alt={card.name}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     );

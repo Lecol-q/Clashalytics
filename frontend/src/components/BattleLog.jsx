@@ -5,9 +5,7 @@ import blueCrown from "../assets/blue_crown.png";
 import redCrown from "../assets/red_crown.png";
 
 function BattleLog({battlelog}) {
-    console.log("Battlelog prop: ", battlelog);
     const battles = battlelog?.battleLog || [];
-    console.log("Battles array: ", battles);
 
     function battleResult(userTeam, opponent) {
         if (userTeam.crowns > opponent.crowns) {

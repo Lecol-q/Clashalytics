@@ -19,7 +19,8 @@ public class PlayerService {
         Player player = api.requestPlayerStats(tag);
         BattleLog battleLog = api.requestBattleLog(tag);
         player.setBattleLog(battleLog);
-        player.setDeckPerformances(dpService.getDeckPerforamnce(battleLog));
+        player.setDeckPerformances(dpService.getDeckPerformance(battleLog));
+        System.out.println(player.getDeckPerformances());
 
         return player;
     }

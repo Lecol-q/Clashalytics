@@ -6,6 +6,7 @@ import BattleLog from "./components/BattleLog";
 import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
+import DeckPerformanceCard from "./components/DeckPerformanceCard.jsx";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -152,7 +153,10 @@ function App() {
         });
     };
 
-    console.log("Full player object:", JSON.stringify(player, null, 2));
+    const getDeckPerformances = () => {
+        return player?.deckPerformances || [];
+    }
+
 
     // this is the main render block
     return (

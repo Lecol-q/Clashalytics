@@ -1,0 +1,43 @@
+.performanceCard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.performanceItem {
+    background: linear-gradient(145deg, #1b2340, #151b30);
+    border: 1px solid rgba(246, 200, 95, 0.2);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.performanceItem h3 {
+    color: #f6c85f;
+    font-size: 18px;
+    margin: 0 0 14px;
+    text-align: center;
+}
+
+.performanceItem p {
+    display: inline-block;
+    color: #d5d9e6;
+    font-size: 14px;
+    margin: 0 16px 16px 0;
+}
+
+@media (max-width: 480px) {
+    .performanceItem {
+        padding: 14px;
+    }
+
+    .performanceItem p {
+        font-size: 12px;
+        margin-right: 8px;
+    }
+
+    .deck-grid {
+        gap: 6px;
+    }
+}

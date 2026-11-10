@@ -10,9 +10,10 @@ import java.util.stream.Collectors;
 @Service
 public class DeckPerformanceService {
     BattleLog battlelog;
-    HashMap<List<Integer>, DeckPerformance> map = new HashMap<>();
 
-    public List<DeckPerformance> getDeckPerforamnce(BattleLog battlelog) {
+    public List<DeckPerformance> getDeckPerformance(BattleLog battlelog) {
+        HashMap<List<Integer>, DeckPerformance> map = new HashMap<>();
+
         for(int i = 0; i < battlelog.getBattleLog().size(); i++) {
 
             Battle battle = battlelog.getBattleLog().get(i);
