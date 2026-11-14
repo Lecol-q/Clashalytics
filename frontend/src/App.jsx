@@ -6,6 +6,7 @@ import BattleLog from "./components/BattleLog";
 import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
+import TopThree from "./components/TopThree.jsx";
 import DeckPerformanceCard from "./components/DeckPerformanceCard.jsx";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [savedPlayers, setSavedPlayers] = useState([]);
     const [player, setPlayer] = useState(null);
+    const [topThreePlayers, setTopThreePlayers] = useState([]);
 
     const isPlayerSaved = savedPlayers.some(
         (player) => player.savedTag === playerStats?.tag
@@ -107,6 +109,7 @@ function App() {
             });
     }, []);
 
+
     const searchPlayer = (playerTag = tag) => {
         console.log("playerTag:", playerTag, typeof playerTag);
         if (playerTag.trim() === "") {
@@ -157,6 +160,26 @@ function App() {
         return player?.deckPerformances || [];
     }
 
+    const getTopThreePlayers = () => {
+        const url = `${import.meta.env.VITE_API_URL}` + "/topthree";
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setTopThreePlayers(data.items);
+            })
+            .catch((err) => {
+                console.error(`Fetch problem: ${err.message}`);
+            });
+    };
+
+    useEffect(() => {
+        getTopThreePlayers();
+    }, []);
 
     // this is the main render block
     return (
@@ -303,6 +326,11 @@ function App() {
                                     Search
                                 </button>
                             </div>
+                            <section className="topThree">
+                                <TopThree
+                                    topThreePlayers={topThreePlayers}
+                                />
+                            </section>
                         </div>
                     </section>
                 )}

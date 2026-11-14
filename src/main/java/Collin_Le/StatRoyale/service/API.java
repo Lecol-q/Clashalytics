@@ -59,15 +59,17 @@ public class API {
         }
     }
 
-    // dead code for now
-    public void requestCardStats() {
+    public Leaderboard requestTopThreeGlobalPlayers() {
         try {
-            items = objectMapper.readValue(restClient.get().uri("/cards?limit=5").retrieve().body(String.class), Items.class);
-            items.getCards();
+            Leaderboard leaderboard  = objectMapper.readValue(restClient.get().uri("/locations/global/pathoflegend/players?limit=3").retrieve().body(String.class), Leaderboard.class);
+            leaderboard.displayGlobalPlayers();
+            return leaderboard;
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
+            return null;
         }
     }
+
 
     // dead code, dead code
     public void requestChests(String tag) {

@@ -23,5 +23,6 @@ public class ClashalyticsApplication {
 		SecurityConfig securityConfig = applicationContext.getBean(SecurityConfig.class);
 		UserService userService = applicationContext.getBean(UserService.class);
 		SavedPlayerService savedPlayerService = applicationContext.getBean(SavedPlayerService.class);
+
 	}
 }
