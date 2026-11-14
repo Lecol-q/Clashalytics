@@ -191,6 +191,7 @@ function App() {
                 setIsSidebarOpen={setIsSidebarOpen}
 
             />
+
             <div className="BannerComponent">
                 <PlayerBanner
                     player={player}
@@ -295,44 +296,45 @@ function App() {
 
             {/* This is the main dashboard */}
 
-            <main className={`mainLayout ${hasSearched ? "searched" : ""}`}>
+            <main className={`mainLayout ${hasSearched ? "searched" : "landing"}`}>
                 {!hasSearched && (
-                    <section className="heroSection">
-                        <div className="heroContent">
+                    <>
+                        <section className="heroSection">
+                            <div className="heroContent">
                 <span className="heroEyebrow">
                     YOUR CLASH ROYALE DASHBOARD
                 </span>
 
-                            <h2>All your stats in one place!</h2>
+                                <h2>All your stats in one place!</h2>
 
-                            <p>
-                                Search your player tag to explore your
-                                trophies, battles, wins, and performance.
-                            </p>
+                                <p>
+                                    Search your player tag to explore your
+                                    trophies, battles, wins, and performance.
+                                </p>
 
-                            <div className="heroSearch">
-                                <input
-                                    type="text"
-                                    placeholder="#PlayerTag"
-                                    aria-label="Search player tag"
-                                    value={tag}
-                                    onChange={(e) => setTag(e.target.value)}
-                                    onKeyDown={(e) => {
-                                        if (e.key === "Enter") searchPlayerDashboard();
-                                    }}
-                                />
+                                <div className="heroSearch">
+                                    <input
+                                        type="text"
+                                        placeholder="#PlayerTag"
+                                        aria-label="Search player tag"
+                                        value={tag}
+                                        onChange={(e) => setTag(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") searchPlayerDashboard();
+                                        }}
+                                    />
 
-                                <button onClick={() => searchPlayerDashboard()}>
-                                    Search
-                                </button>
+                                    <button onClick={() => searchPlayerDashboard()}>
+                                        Search
+                                    </button>
+                                </div>
                             </div>
-                            <section className="topThree">
-                                <TopThree
-                                    topThreePlayers={topThreePlayers}
-                                />
-                            </section>
-                        </div>
-                    </section>
+                        </section>
+                        <a href="#top-players" className="scrollArrow">
+                            ↓
+                        </a>
+                    </>
+
                 )}
 
                 {hasSearched && (
@@ -359,6 +361,14 @@ function App() {
                 )}
             </main>
 
+            {!hasSearched && (
+                <section className="topThree">
+                    <TopThree
+                        topThreePlayers={topThreePlayers}
+                        onPlayerClick={searchPlayer}
+                    />
+                </section>
+            )}
         </div>
     );
 }

@@ -1,11 +1,18 @@
 
 import React from "react";
 import "./TopThree.css";
+import BadgeImage from "../data/BadgeImage.jsx";
 
-function TopThree({ topThreePlayers = [] }) {
+function TopThree({ topThreePlayers = [], onPlayerClick }) {
+
+    const rankClasses = {
+        1: "firstPlace",
+        2: "secondPlace",
+        3: "thirdPlace"
+    };
 
     return (
-        <div className="topThreeContainer">
+        <div className="topThreeContainer" id="top-players">
             <div className="leaderboardHeader">
                 <h2>Top Players</h2>
             </div>
@@ -14,20 +21,29 @@ function TopThree({ topThreePlayers = [] }) {
                 {topThreePlayers.map((player) => (
                     <div
                         key={player.tag}
-                        className={`playerCard rank-${player.rank}`}
+                        className={`playerCard ${rankClasses[player.rank] || ""}`}
+                        onClick={() => onPlayerClick(player.tag)}
                     >
                         <div className="playerRank">
                             {player.rank === 1 && (
-                                <span className="championCrown">♛</span>
+                                <span className="championCrown"></span>
                             )}
-                            <span>#{player.rank}</span>
+                            <span>{player.rank}</span>
                         </div>
 
-                        <h3 className="userName">{player.name}</h3>
+                        <div className="playerIdentity">
+                            <div className="playerAvatar">
+                                <BadgeImage id={player.clan?.badgeId} />
+                            </div>
+                        </div>
 
-                        <p className="clanName">
-                            {player.clan?.name ?? "No Clan"}
-                        </p>
+                        <div className="playerInfo">
+                            <h3 className="userName">{player.name}</h3>
+                            <h4 className="userTag">{player.tag}</h4>
+                            <p className="clanName">
+                                {player.clan?.name ?? "No Clan"}
+                            </p>
+                        </div>
 
                         <div className="playerElo">
                             <strong>{player.eloRating}</strong>

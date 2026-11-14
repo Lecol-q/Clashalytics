@@ -49,8 +49,6 @@
 .playerAvatar {
     width: 70px;
     height: 70px;
-    border-radius: 12px;
-    background: #39415b;
 }
 
 .playerInfo h2 {

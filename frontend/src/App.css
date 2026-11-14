@@ -253,14 +253,23 @@
     box-sizing: border-box;
 }
 
+.topThree {
+    width: 100%;
+    flex-shrink: 0;
+    min-height: 500px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
 /* Landing screen */
 .heroSection {
     display: flex;
     flex: 1;
     width: 100%;
+    position: relative;
     align-items: center;
     justify-content: center;
-    padding: 20px 0 80px;
+    padding: 20px 0;
     box-sizing: border-box;
     text-align: center;
     animation: heroEnter 650ms ease both;
@@ -555,6 +564,48 @@
     font-size: 18px;
 }
 
+
+.mainLayout.landing {
+    flex: none;
+    min-height: calc(100vh - 80px);
+    box-sizing: border-box;
+}
+
+.mainLayout.landing .heroSection {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.scrollArrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: white;
+    font-size: 36px;
+    text-decoration: none;
+    cursor: pointer;
+
+    animation: arrowBounce 1.5s ease-in-out infinite;
+    transition: color 0.2s ease;
+}
+
+.scrollArrow:hover {
+    color: #d4af37;
+}
+
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
+/* Mobile */
 @media (prefers-reduced-motion: reduce) {
     .heroSection {
         animation: none;
@@ -562,7 +613,6 @@
     }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
     .mainLayout {
         padding: 20px 12px 28px;
