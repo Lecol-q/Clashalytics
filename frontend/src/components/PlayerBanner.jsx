@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { useState } from "react";
 import TrophyChart from "./TrophyChart.jsx";
 import PlayerStats from "./PlayerStats.jsx";
+import BadgeImage from "../data/BadgeImage.jsx";
 function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removePlayer, chartData}) {
 
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
 
             <div className="playerIdentity">
                 <div className="playerAvatar">
-                    {/* Player avatar */}
+                    <BadgeImage id={player.clan?.badgeId}/>
                 </div>
 
                 <div className="playerInfo">
