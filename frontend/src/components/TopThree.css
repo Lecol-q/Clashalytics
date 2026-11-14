@@ -119,6 +119,7 @@
 }
 
 
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
 
@@ -139,27 +140,34 @@
         width: 90%;
         box-sizing: border-box;
         padding: 14px;
-        gap: 12px;
-        border-radius: 10px;
+        gap: 10px;
         margin-bottom: 12px;
+
+        flex-wrap: wrap;
     }
 
     .playerRank {
-        min-width: 30px;
+        min-width: 25px;
         font-size: 18px;
     }
 
+    .playerIdentity {
+        flex-shrink: 0;
+    }
+
     .playerAvatar {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
     }
 
     .playerAvatar img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .playerInfo {
+        flex: 1;
         min-width: 0;
     }
 
@@ -170,6 +178,7 @@
 
     .userTag {
         font-size: 10px;
+        overflow-wrap: anywhere;
     }
 
     .clanName {
@@ -189,29 +198,69 @@
 }
 
 /* Extra small phones */
-@media (max-width: 380px) {
+@media (max-width: 480px) {
 
     .playerCard {
         width: 94%;
-        padding: 11px;
+        padding: 12px;
         gap: 8px;
     }
 
     .playerRank {
-        min-width: 25px;
+        min-width: 22px;
         font-size: 16px;
     }
 
     .playerAvatar {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .playerInfo {
+        flex-basis: calc(100% - 100px);
     }
 
     .userName {
         font-size: 13px;
     }
 
+    .userTag {
+        font-size: 10px;
+    }
+
+    .clanName {
+        font-size: 10px;
+    }
+
     .playerElo {
         font-size: 15px;
     }
 }
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+
+    .playerCard {
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .playerRank {
+        min-width: 20px;
+        font-size: 14px;
+    }
+
+    .playerAvatar {
+        width: 26px;
+        height: 26px;
+    }
+
+    .playerInfo {
+        flex-basis: calc(100% - 90px);
+    }
+
+    .playerElo {
+        font-size: 13px;
+    }
+}
+
