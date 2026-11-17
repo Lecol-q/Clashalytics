@@ -24,9 +24,11 @@ public class DeckPerformanceService {
             List<Integer> deckKey = cards.stream().map(Card::getId).collect(Collectors.toList());
             Collections.sort(deckKey.subList(3, 8));
 
+            GameMode gameMode = battle.getGameMode();
+
             if(!map.containsKey(deckKey)) {
                 //public DeckPerformance(List<Card> deck, int numOfBattle, int wins, int draws, int loses, int teamCrowns, int opponentCrowns)
-                map.put(deckKey, new DeckPerformance(cards, 1, win(team.getCrowns(), opponent.getCrowns()), draw(team.getCrowns(), opponent.getCrowns()), lose(team.getCrowns(), opponent.getCrowns())));
+                map.put(deckKey, new DeckPerformance(cards, 1, win(team.getCrowns(), opponent.getCrowns()), draw(team.getCrowns(), opponent.getCrowns()), lose(team.getCrowns(), opponent.getCrowns()), gameMode));
             } else {
                 DeckPerformance performance = map.get(deckKey);
                 performance.updatePerformance(win(team.getCrowns(), opponent.getCrowns()), draw(team.getCrowns(), opponent.getCrowns()), lose(team.getCrowns(), opponent.getCrowns()));

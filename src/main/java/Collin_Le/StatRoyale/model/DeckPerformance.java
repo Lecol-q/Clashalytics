@@ -11,15 +11,18 @@ public class DeckPerformance {
     int loses;
     int teamCrowns;
     int opponentCrowns;
+    GameMode gameMode;
+
 
     public DeckPerformance() {}
 
-    public DeckPerformance(List<Card> deck, int numOfBattle, int wins, int draws, int loses) {
+    public DeckPerformance(List<Card> deck, int numOfBattle, int wins, int draws, int loses, GameMode gameMode) {
         this.deck = deck;
         this.numOfBattle = numOfBattle;
         this.wins = wins;
         this.draws = draws;
         this.loses = loses;
+        this.gameMode = gameMode;
     }
 
     // getters
@@ -51,6 +54,8 @@ public class DeckPerformance {
         return opponentCrowns;
     }
 
+    public GameMode getGameMode() { return gameMode; }
+
     // setters
     public void setDeck(List<Card> deck) {
         this.deck = deck;
@@ -79,6 +84,7 @@ public class DeckPerformance {
     public void setOpponentCrowns(int opponentCrowns) {
         this.opponentCrowns = opponentCrowns;
     }
+    public void setGameMode(GameMode gameMode) { this.gameMode = gameMode; }
 
     // custom methods
     public void updatePerformance(int win, int draw, int lost) {

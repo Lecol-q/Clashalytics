@@ -169,6 +169,28 @@
     margin: 0 auto;
 }
 
+.deckModeSelector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.deckModeSelector button {
+    padding: 8px 18px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.deckModeSelector button.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
 @media (max-width: 550px) {
     .playerBanner {
         flex-direction: column;
@@ -176,6 +198,8 @@
         text-align: center;
         gap: 22px;
         padding: 25px 16px 45px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .playerIdentity {
@@ -223,20 +247,47 @@
     .expandedTrophyChart {
         width: 100%;
         min-width: 0;
+        box-sizing: border-box;
     }
 
     .bannerExpandButton {
         bottom: 5px;
     }
 
+    /* Game mode selector */
+    .deckModeSelector {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 8px;
+        margin: 16px 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .deckModeSelector button {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    /* Best and worst decks */
     .bestWorstDecks {
+        display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
         margin-top: 15px;
+        width: 100%;
+        min-width: 0;
     }
 
     .bestDeck,
     .worstDeck {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
         padding: 16px;
     }
 

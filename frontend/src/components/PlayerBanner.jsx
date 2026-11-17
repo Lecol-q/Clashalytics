@@ -6,11 +6,28 @@ import PlayerStats from "./PlayerStats.jsx";
 import BadgeImage from "../data/BadgeImage.jsx";
 function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removePlayer, chartData}) {
 
+    const [selectedMode, setSelectedMode] = useState("all");
+
     const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     if(!player) return null;
 
     const deckPerformances = player.deckPerformances || [];
+
+    const rankedDeckPerformances = deckPerformances.filter(
+        performance => performance.gameMode?.id === 72000464
+    );
+
+    const trophyRoadDeckPerformances = deckPerformances.filter(
+        performance => performance.gameMode?.id === 72000006
+    );
+
+    const filteredDeckPerformances =
+        selectedMode === "rankedAndTrophyRoad"
+            ? deckPerformances.filter(performance =>
+                [72000464, 72000006].includes(Number(performance.gameMode?.id))
+            )
+            : deckPerformances;
 
     const getWinRate = (deck) => {
         if (deck.numsOfBattle === 0) return 0;
@@ -18,7 +35,7 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
         return (deck.wins / deck.numOfBattle) * 100;
     };
 
-    const sortedDecks = [...deckPerformances].sort(
+    const sortedDecks = [...filteredDeckPerformances].sort(
         (a, b) => getWinRate(b) - getWinRate(a)
     );
 
@@ -90,6 +107,21 @@ function PlayerBanner({ player, loggedInUser, isPlayerSaved, savePlayer, removeP
 
             <div className={`expandedTrophyChart ${isExpanded ? "expanded" : ""}`}>
                 <TrophyChart data={chartData} />
+                <div className="deckModeSelector">
+                    <button
+                        className={selectedMode === "all" ? "active" : ""}
+                        onClick={() => setSelectedMode("all")}
+                    >
+                        All
+                    </button>
+
+                    <button
+                        className={selectedMode === "rankedAndTrophyRoad" ? "active" : ""}
+                        onClick={() => setSelectedMode("rankedAndTrophyRoad")}
+                    >
+                        Ranked + Trophy Road
+                    </button>
+                </div>
                 <div className="bestWorstDecks">
                     {bestDeck && (
                         <div className="bestDeck">

@@ -7,7 +7,6 @@ import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
 import TopThree from "./components/TopThree.jsx";
-import DeckPerformanceCard from "./components/DeckPerformanceCard.jsx";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -142,7 +141,7 @@ function App() {
 
     const getTrophyChartData = () => {
         const battles = player?.battleLog?.battleLog || [];
-        const recentBattles = [...battles].reverse();
+        const recentBattles = [...battles].reverse().filter(battle => battle.gameMode?.id === 72000006);
 
         let totalTrophies = 0;
 
@@ -155,10 +154,6 @@ function App() {
             };
         });
     };
-
-    const getDeckPerformances = () => {
-        return player?.deckPerformances || [];
-    }
 
     const getTopThreePlayers = () => {
         const url = `${import.meta.env.VITE_API_URL}` + "/topthree";
