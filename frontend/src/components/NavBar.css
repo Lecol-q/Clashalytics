@@ -1,7 +1,8 @@
 .toolBar {
     width: 100%;
     height: 75px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-content: space-between;
     padding: 0 35px;
@@ -14,6 +15,37 @@
     top: 0;
     z-index: 100;
 
+}
+
+.navPages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navPages button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.leaderboardButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.leaderboardButton:hover {
+    color: #f6c85f;
+    transform: translateY(2px);
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
 .brand {
@@ -29,6 +61,8 @@
     font-weight: bold;
     font-size: 1.6rem;
     cursor: pointer;
+
+    justify-self: start;
 }
 
 .brand:hover {

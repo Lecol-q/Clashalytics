@@ -29,4 +29,10 @@ public class PlayerController {
     public Leaderboard getTopThree() {
         return api.requestTopThreeGlobalPlayers();
     }
+
+    @CrossOrigin(origins = {"https://clashalytics.onrender.com", "http://localhost:5173/"})
+    @GetMapping("/global-leaderboard")
+    public Leaderboard getTopGlobalPlayers() {
+        return api.requestTopGlobalPlayers();
+    }
 }

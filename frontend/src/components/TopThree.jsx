@@ -1,9 +1,11 @@
-
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "./TopThree.css";
 import BadgeImage from "../data/BadgeImage.jsx";
 
 function TopThree({ topThreePlayers = [], onPlayerClick }) {
+
+    const navigate = useNavigate();
 
     const rankClasses = {
         1: "firstPlace",
@@ -12,6 +14,7 @@ function TopThree({ topThreePlayers = [], onPlayerClick }) {
     };
 
     return (
+        <>
         <div className="topThreeContainer" id="top-players">
             <div className="leaderboardHeader">
                 <h2>Top Players</h2>
@@ -52,6 +55,12 @@ function TopThree({ topThreePlayers = [], onPlayerClick }) {
                 ))}
             </div>
         </div>
+        <div className="moreContainer">
+            <button className="moreButton" onClick={() => navigate("/leaderboard")}>
+                View More
+            </button>
+        </div>
+            </>
     );
 }
 

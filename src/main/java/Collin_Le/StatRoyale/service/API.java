@@ -70,14 +70,15 @@ public class API {
         }
     }
 
-
-    // dead code, dead code
-    public void requestChests(String tag) {
+    public Leaderboard requestTopGlobalPlayers() {
         try {
-            chests = objectMapper.readValue(restClient.get().uri("/players/{playerTag}/upcomingchests", tag).retrieve().body(String.class), ChestList.class);
-            chests.getUpcomingChests();
+            Leaderboard leaderboard  = objectMapper.readValue(restClient.get().uri("/locations/global/pathoflegend/players?limit=100").retrieve().body(String.class), Leaderboard.class);
+            leaderboard.displayGlobalPlayers();
+            return leaderboard;
         } catch(HttpClientErrorException.NotFound k) {
             System.out.println(k);
+            return null;
         }
     }
+
 }

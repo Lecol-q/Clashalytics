@@ -7,6 +7,7 @@ import PlayerStats from "./components/PlayerStats.jsx";
 import NavBar from "./components/NavBar.jsx";
 import PlayerBanner from "./components/PlayerBanner.jsx";
 import TopThree from "./components/TopThree.jsx";
+import { useLocation } from "react-router-dom";
 
 function App() {
     const [hasSearched, setHasSearched] = useState(false);
@@ -18,6 +19,9 @@ function App() {
     const [savedPlayers, setSavedPlayers] = useState([]);
     const [player, setPlayer] = useState(null);
     const [topThreePlayers, setTopThreePlayers] = useState([]);
+
+    const location = useLocation();
+    const playerTag = location.state?.playerTag;
 
     const isPlayerSaved = savedPlayers.some(
         (player) => player.savedTag === playerStats?.tag
@@ -134,6 +138,12 @@ function App() {
                 console.error(`Fetch problem: ${err.message}`);
             });
     };
+
+    useEffect(() => {
+        if (playerTag) {
+            searchPlayer(playerTag);
+        }
+    }, [playerTag]);
 
     const searchPlayerDashboard = (playerTag = tag) => {
         searchPlayer(playerTag);

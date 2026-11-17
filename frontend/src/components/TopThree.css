@@ -5,6 +5,7 @@
 
 .leaderboardHeader {
     text-align: center;
+    margin-bottom: 75px;
 }
 
 .playerCard {
@@ -118,7 +119,33 @@
     }
 }
 
+.moreButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
 
+    color: #f6c85f;
+    background: rgba(246, 200, 95, 0.08);
+    border: 1px solid rgba(246, 200, 95, 0.45);
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.moreButton:hover {
+    background: rgba(246, 200, 95, 0.16);
+    transform: translateY(-1px);
+}
+
+.moreContainer {
+    display: flex;
+    justify-content: center;
+}
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

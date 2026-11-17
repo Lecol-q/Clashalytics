@@ -1,8 +1,11 @@
 import "./NavBar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({tag, setTag, searchPlayerDashboard, setIsSidebarOpen}) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     return (
         <header className="toolBar">
@@ -25,6 +28,14 @@ function Navbar({tag, setTag, searchPlayerDashboard, setIsSidebarOpen}) {
                 </svg>
                 <span>Clashalytics</span>
             </button>
+
+            <div className="navPages">
+                <button
+                    className="leaderboardButton"
+                    onClick={() => navigate("/leaderboard")}>
+                    Leaderboard
+                </button>
+            </div>
 
             <nav className="navActions">
                 <div className={`searchBox ${isSearchOpen ? "expanded" : ""}`}>

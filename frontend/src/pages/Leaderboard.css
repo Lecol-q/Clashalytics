@@ -1,0 +1,266 @@
+.topThreeContainer {
+    padding: 40px 0 100px;
+    min-height: 500px;
+}
+
+.leaderboardHeader {
+    text-align: center;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 20px;
+    border: 1px solid #3a3d4d;
+    border-radius: 12px;
+    background: #1e2230;
+
+    width: 65%;
+    margin: 0 auto 12px auto;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.playerCard:hover {
+    transform: scale(1.03);
+}
+
+.playerRank {
+    min-width: 45px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.playerInfo {
+    flex: 1;
+}
+
+.userName,
+.userTag,
+.clanName {
+    margin: 0;
+}
+
+.userTag {
+    font-size: 12px;
+    font-weight: normal;
+    color: #9298aa;
+    margin-top: 2px;
+}
+
+.clanName {
+    color: #9298aa;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.playerElo {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* 1st Place - Gold */
+.playerCard.firstPlace {
+    background: linear-gradient(135deg, #3d321b, #252313);
+    border: 1px solid #d4af37;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.playerCard.firstPlace .playerRank,
+.playerCard.firstPlace .playerElo {
+    color: #ffd700;
+}
+
+/* 2nd Place - Silver */
+.playerCard.secondPlace {
+    background: linear-gradient(135deg, #343943, #222630);
+    border: 1px solid #aeb7c2;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.15);
+}
+
+.playerCard.secondPlace .playerRank,
+.playerCard.secondPlace .playerElo {
+    color: #d3d9e0;
+}
+
+/* 3rd Place - Bronze */
+.playerCard.thirdPlace {
+    background: linear-gradient(135deg, #402c20, #29201c);
+    border: 1px solid #cd7f32;
+    box-shadow: 0 0 10px rgba(205, 127, 50, 0.15);
+}
+
+.playerCard.thirdPlace .playerRank,
+.playerCard.thirdPlace .playerElo {
+    color: #cd9a63;
+}
+
+.playerCard.firstPlace {
+    animation: goldGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes goldGlow {
+    0%, 100% {
+        box-shadow:
+                0 0 8px rgba(212, 175, 55, 0.2),
+                0 0 15px rgba(212, 175, 55, 0.1);
+    }
+
+    50% {
+        box-shadow:
+                0 0 15px rgba(255, 215, 0, 0.5),
+                0 0 30px rgba(255, 215, 0, 0.25),
+                0 0 45px rgba(255, 215, 0, 0.1);
+    }
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+    .topThreeContainer {
+        padding: 30px 0 60px;
+        min-height: 100vh;
+    }
+
+    .leaderboardHeader {
+        margin-bottom: 25px;
+    }
+
+    .leaderboardHeader h2 {
+        font-size: 24px;
+    }
+
+    .playerCard {
+        width: 90%;
+        box-sizing: border-box;
+        padding: 14px;
+        gap: 10px;
+        margin-bottom: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .playerRank {
+        min-width: 25px;
+        font-size: 18px;
+    }
+
+    .playerIdentity {
+        flex-shrink: 0;
+    }
+
+    .playerAvatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .playerAvatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .playerInfo {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .userName {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    .userTag {
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    .clanName {
+        font-size: 11px;
+        margin-top: 3px;
+        overflow-wrap: anywhere;
+    }
+
+    .playerElo {
+        font-size: 17px;
+        white-space: nowrap;
+    }
+
+    .playerCard:hover {
+        transform: none;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+
+    .playerCard {
+        width: 94%;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .playerRank {
+        min-width: 22px;
+        font-size: 16px;
+    }
+
+    .playerAvatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .playerInfo {
+        flex-basis: calc(100% - 100px);
+    }
+
+    .userName {
+        font-size: 13px;
+    }
+
+    .userTag {
+        font-size: 10px;
+    }
+
+    .clanName {
+        font-size: 10px;
+    }
+
+    .playerElo {
+        font-size: 15px;
+    }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+
+    .playerCard {
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .playerRank {
+        min-width: 20px;
+        font-size: 14px;
+    }
+
+    .playerAvatar {
+        width: 26px;
+        height: 26px;
+    }
+
+    .playerInfo {
+        flex-basis: calc(100% - 90px);
+    }
+
+    .playerElo {
+        font-size: 13px;
+    }
+}
+
