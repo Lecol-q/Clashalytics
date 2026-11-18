@@ -1,46 +1,64 @@
-import "./DeckPerformanceCard.css"
 import React from "react";
-function DeckPerformanceCard({ deckPerformances }) {
-    console.log(deckPerformances);
+import "./DeckPerformance.css";
 
+function DeckPerformance({ deckPerformances, onClose, initialView = "all" }) {
     const getWinRate = (deck) => {
-        return deck.battlesPlayed > 0
-            ? (deck.wins / deck.battlesPlayed) * 100
+        return deck.numOfBattle > 0
+            ? (deck.wins / deck.numOfBattle) * 100
             : 0;
     };
 
-    const bestDeck = [...deckPerformances].sort(
-        (a, b) => getWinRate(b) - getWinRate(a)
-    )[0];
-
-    const worstDeck = [...deckPerformances].sort(
-        (a, b) => getWinRate(a) - getWinRate(b)
-    )[0];
-
     return (
-        <div className="performanceCard">
-            {deckPerformances.map((deck, index) => (
-                <div key={index} className="performanceItem">
-                    <h3>Deck {index + 1}</h3>
+        <div className="deckPerformanceBackdrop" onClick={onClose}>
+            <div
+                className="deckPerformanceWindow"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="deckPerformanceHeader">
+                    <div>
+                        <h2>Deck Performance</h2>
+                        <p>Analyze your recent deck performance</p>
+                    </div>
 
-                    <p>Wins: {deck.wins}</p>
-                    <p>Losses: {deck.loses}</p>
-                    <p>Battles: {deck.numOfBattle}</p>
+                    <button
+                        className="closeDeckPerformance"
+                        onClick={onClose}
+                    >
+                        ✕
+                    </button>
+                </div>
 
-                    <div className="deck-grid">
-                        {deck.deck.map((card) => (
-                            <div className="battleDeckCard" key={card.id}>
-                                <img
-                                    src={card.iconUrls?.medium}
-                                    alt={card.name}
-                                />
+                <div className="deckPerformanceBody">
+                    <div className="performanceCard">
+                        {deckPerformances.map((deck, index) => (
+                            <div className="performanceItem" key={index}>
+                                <h3>Deck {index + 1}</h3>
+
+                                <p>Wins: {deck.wins}</p>
+                                <p>Losses: {deck.loses}</p>
+                                <p>Battles: {deck.numOfBattle}</p>
+                                <p>Win Rate: {getWinRate(deck).toFixed(1)}%</p>
+
+                                <div className="deck-grid">
+                                    {deck.deck.map((card) => (
+                                        <div
+                                            className="battleDeckCard"
+                                            key={card.id}
+                                        >
+                                            <img
+                                                src={card.iconUrls?.medium}
+                                                alt={card.name}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            ))}
+            </div>
         </div>
-    )
-};
+    );
+}
 
-export default DeckPerformanceCard;
+export default DeckPerformance;

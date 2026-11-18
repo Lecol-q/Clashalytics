@@ -1,6 +1,6 @@
 import "./NavBar.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Navbar({tag, setTag, searchPlayerDashboard, setIsSidebarOpen}) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -74,33 +74,25 @@ function Navbar({tag, setTag, searchPlayerDashboard, setIsSidebarOpen}) {
                         </svg>
                     </button>
                 </div>
-
                 <button
                     className="userButton"
                     onClick={() => setIsSidebarOpen(true)}
                     aria-label="Login"
                     title="Login"
                 >
-                    <button
-                        className="userButton"
-                        onClick={() => setIsSidebarOpen(true)}
-                        aria-label="Login"
-                        title="Login"
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="26"
+                        height="26"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     >
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="26"
-                            height="26"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <circle cx="12" cy="8" r="4" />
-                            <path d="M5 21v-2a7 7 0 0 1 14 0v2" />
-                        </svg>
-                    </button>
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+                    </svg>
                 </button>
             </nav>
         </header>

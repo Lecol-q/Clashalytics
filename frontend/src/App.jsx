@@ -130,6 +130,8 @@ function App() {
                 return response.json();
             })
             .then((data) => {
+                console.log(data);
+
                 setPlayerStats(data);
                 setPlayer(data);
                 setHasSearched(true);

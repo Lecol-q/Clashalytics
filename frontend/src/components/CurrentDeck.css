@@ -70,6 +70,35 @@
     padding: 10px 20px;
 }
 
+.viewDecks {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+
+    color: #f6c85f;
+    background: rgba(246, 200, 95, 0.08);
+    border: 1px solid rgba(246, 200, 95, 0.45);
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.viewDecks:hover {
+    background: rgba(246, 200, 95, 0.16);
+    transform: translateY(-1px);
+}
+
+.viewDecksContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
 @media (max-width: 600px) {
     .deckPanel {
         width: 100%;
